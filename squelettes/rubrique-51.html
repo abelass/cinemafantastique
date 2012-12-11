@@ -1,0 +1,62 @@
+<BOUCLE_accueil(RUBRIQUES){id_rubrique}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body>
+<div id="principal">
+	<INCLURE{fond=include/header}{id_rubrique}>
+
+	<INCLURE{fond=include/menu}{id_rubrique}>
+
+    <div id="contenu" >
+        <INCLURE{fond=include/path}{id_rubrique}>
+        [<h3>(#TITRE|supprimer_numero)</h3>]
+        [<strong>(#DESCRIPTIF)</strong>]
+        [(#TEXTE|paragrapher)]
+        <BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,5}{doublons}>
+        <div class="box1 event">
+        [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
+        [<img src="IMG/(#LOGO_ARTICLE|fichier)" alt="#TITRE" class="onglet3" />]
+        [<p class="chapeau">(#CHAPO|paragrapher)</p>]
+        <span class="more"><a href="#URL_ARTICLE">lire plus</a>  | <BOUCLE_nbComm(FORUMS){id_article}></BOUCLE_nbComm></B_nbComm><a href="#URL_ARTICLE#commentaire">#TOTAL_BOUCLE<//B_nbComm> commentaires</a></span>
+        </div>
+        </BOUCLE_art1>
+    </div>
+	
+	<div id="colonne2">
+    	<div class="box1">
+        	<h4>Autres interviews</h4>
+            <dl>
+        	<BOUCLE_articlem(ARTICLES){id_rubrique}{par date}{inverse}>
+            <BOUCLE_premierdumois(ARTICLES){id_article}{doublons}>
+            <dt class="toggler"><a href="javascript:;">[(#DATE|nom_mois)] [(#DATE|annee)]</a></dt>
+            <dd class="accordion">
+                <BOUCLE_listeArt(ARTICLES){id_article}{"<br />"}>
+                <img src="[(#CHEMIN{assets/ico_main.gif})]" alt="" /> <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+                </BOUCLE_listeArt>
+                <br />
+                <BOUCLE_MOIS(ARTICLES){id_rubrique}{mois_relatif=0}{doublons}{par date}{inverse}{"<br />"}>
+                <img src="[(#CHEMIN{assets/ico_main.gif})]" alt="" /> <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+                </BOUCLE_MOIS>
+            </dd>
+            </BOUCLE_premierdumois>
+            </BOUCLE_articlem>
+            </dl> 
+            <script type="text/javascript">
+                var stretchers = $$('dd.accordion');
+                var togglers = $$('dt.toggler');
+                new Accordion(togglers,stretchers, {show:0, alwaysHide: true});
+            </script>
+        </div>
+    </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>		
+	<div class="clear"></div>
+
+</div>
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_accueil>

@@ -1,0 +1,15 @@
+<h4>R&eacute;centes critiques</h4>
+<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{par date}{inverse}{0,10}>
+<BOUCLE_lien(LIEN_FILM_ARTICLE){id_article = #ID_ARTICLE}>
+<BOUCLE_NomFilm(FILMS){id_film}>
+<dl class="jaquette">
+<dt><a href="#URL_FILM" ><img src="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" class="onglet1" alt="affiche du film" /></a></dt>
+<dd>
+	[<strong>(#TITLE|textebrut)</strong>]<br />
+	[(#ANNEE|textebrut)]
+</dd>
+</dl>
+</BOUCLE_NomFilm></BOUCLE_lien></BOUCLE_articles>
+
+
+

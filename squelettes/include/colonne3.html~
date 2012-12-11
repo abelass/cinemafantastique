@@ -1,0 +1,66 @@
+<div id="colonne3">
+	<!-- Necronomicon -->
+    <div id="Necronomicon">        
+        <div id="flashcontent3">
+           <BOUCLE_necro(RUBRIQUES){id_rubrique=87}>#TITRE</BOUCLE_necro>
+           <BOUCLE_un_article(ARTICLES){id_rubrique=87}{par date}{inverse}>
+           <dl>
+            <dt><a href="#URL_ARTICLE">#TITRE</a></dt>
+           </dl></BOUCLE_un_article>
+        </div>
+        <script type="text/javascript">
+            // <![CDATA[
+            var so = new SWFObject("[(#CHEMIN{images/necronomicon.swf})]", "pinup", "222", "278", "9", "#FF6600");
+            so.addParam("wmode", "transparent");
+            so.write("flashcontent3");
+            // ]]>
+        </script> 
+       
+    </div>
+	<!-- newsletter -->
+    <div class="box1">
+	<h4>Newsletter</h4>
+	#FORMULAIRE_ABONNEMENT{liste1}
+	</div>
+    
+    <B_ban>
+    <!-- ban -->
+    <div class="ban">
+    <BOUCLE_ban(ARTICLES){id_article=1114}>
+    [(#TEXTE)]
+    </BOUCLE_ban>
+    </div>
+    </B_ban>
+    
+    <!-- forum -->
+    <div class="box1">
+    <h4><span style="display:none">Forum</span></h4>
+    <span><a href="http://forum.cinemafantastique.be/" target="_blank"><img src="#CHEMIN{IMG/gif/bu_forum.gif}" alt="Forum" title="Forum" /></a></span>
+    </div>
+
+    <!-- nuage de tags -->
+    <INCLURE{fond=include/tags}>
+	
+    <!-- network -->
+	<div class="box1">
+	<h4>Suivez-nous sur</h4>
+	<span><img src="http://assets1.twitter.com/images/favicon.ico" alt="twitter" /> <a href="http://www.twitter.com/cinemafantastiq">Twitter</a></span><br />
+    <span><img src="http://static.ak.fbcdn.net/rsrc.php/zAY6U/hash/cue6n9tz.ico" alt="facebook" /> <a href="http://www.facebook.com/group.php?gid=24606347222&ref=ts">Facebook</a></span><br />
+    <span><img src="http://assets1.twitter.com/images/favicon.ico" alt="myspace" /> <a href="http://www.myspace.com/goresli">MySpace</a></span>
+	</div>
+	<!-- statistiques site -->
+	<div class="box1">
+	<h4>Statistiques</h4>
+	<p>Ce site compte actuellement :</p>
+	<ul>
+		<li><BOUCLE_films(FILMS){id_rubrique IN 2,3,5}></BOUCLE_films></B_films>#TOTAL_BOUCLE<//B_nbCritic> critiques de film</li>
+		<li><BOUCLE_nbCritic(ARTICLES){id_rubrique IN 2,3,5}></BOUCLE_nbCritic></B_nbCritic>#TOTAL_BOUCLE<//B_nbCritic> critiques de film</li>		
+		<li><BOUCLE_nbAut(AUTEURS)></BOUCLE_nbAut></B_nbAut>#TOTAL_BOUCLE<//B_nbAut> chroniqueurs</li>
+		<BOUCLE_LesComms(COMMENTAIRES_FILM){statut = publie}></BOUCLE_LesComms>[(#SET{total_comm,#TOTAL_BOUCLE})]<//B_LesComms>
+        <li><BOUCLE_nbComm(FORUMS)></BOUCLE_nbComm></B_nbComm>[(#TOTAL_BOUCLE|plus{#GET{total_comm}})] commentaires<//B_nbComm></li>
+	</ul>
+	</div>
+    
+	
+
+</div>

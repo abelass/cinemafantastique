@@ -1,0 +1,15 @@
+<B_articles>
+<span class="pagination">Suite : #PAGINATION</span>
+<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{par date}{inverse}{pagination 32}>
+<BOUCLE_lien(LIEN_FILM_ARTICLE){id_article = #ID_ARTICLE}>
+<BOUCLE_NomFilm(FILMS){id_film}>
+	<dl class="jaquette">
+	<dt><a class="ajax" href="#URL_FILM"><img src="[(#CHEMIN{upload_film/[(#LOGO)]})]" class="onglet3"  alt="Affiche du film #TITLE" /></a></dt>
+	<dd>[<strong>(#TITLE|textebrut)</strong>]<br />[<em>(#TITLE_VO|textebrut)</em>]</dd>
+	</dl>
+</BOUCLE_NomFilm>
+</BOUCLE_lien>
+</BOUCLE_articles>
+<span class="pagination">#TOTAL_BOUCLE r&eacute;sultats sur un total de #GRAND_TOTAL films<br />Suite : #PAGINATION</span>
+</B_articles>
+<!-- r�cup�ration de tous les films par ordre des chroniques -->

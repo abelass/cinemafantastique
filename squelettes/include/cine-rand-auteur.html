@@ -1,0 +1,8 @@
+<h4>Chroniqueurs</h4>
+<BOUCLE_auteur_principal(AUTEURS){par hasard}{0,1}{id_auteur!=1}>
+	 <div class="chroniqueur">	
+		[<a href="#URL_AUTEUR">(#LOGO_AUTEUR||image_reduire{70,200}|inserer_attribut{"class","onglet1"})</a>]	
+		[<h5><a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a></h5>]
+		[<p>(#BIO|couper{200})</p>]	
+     </div>	
+</BOUCLE_auteur_principal>

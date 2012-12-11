@@ -1,0 +1,73 @@
+<BOUCLE_accueil(ARTICLES){id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body>
+
+<div id="principal">
+    <INCLURE{fond=include/header}{id_rubrique}>
+    
+    <INCLURE{fond=include/menu}{id_rubrique}>
+
+	<div id="contenu" >
+		<INCLURE{fond=include/path}{id_rubrique}>
+		<BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
+        <div class="article">   
+            [<h4>(#TITRE|supprimer_numero)</h4>]
+            [<div class="chapeau">(#CHAPO|paragrapher)</div>]
+            [(#TEXTE|paragrapher)]
+            [<div class="ps">(#PS)</div>]
+        </div>
+        
+	</div>
+
+	<div id="colonne2">
+    	<div class="box1">
+    	<h4>Toutes les Queens</h4>
+        <BOUCLE_articlem(ARTICLES){id_rubrique}{par date}{inverse}>
+        <BOUCLE_premierdumois(ARTICLES){id_article}{doublons}>
+        <span class="toggler"><img src="[(#CHEMIN{images/ico_main.gif})]" alt="" /> <a href="javascript:;">[(#DATE|nom_mois)] [(#DATE|annee)]</a></span>
+        <div class="accordion">
+            <BOUCLE_listeArt(ARTICLES){id_article}{"<br />"}>
+            <div class="actu">
+           <a href="#URL_ARTICLE">[(#LOGO_ARTICLE||image_masque{masque2.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+            <span class="date">[(#DATE|nom_mois)] [(#DATE|annee)]</span>
+            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{34})]</a></h5>
+            <div class="clear"> </div>
+        	</div>
+            </BOUCLE_listeArt>
+            <BOUCLE_MOIS(ARTICLES){id_rubrique}{mois_relatif=0}{doublons}{par date}{inverse}>
+            <div class="actu">
+           <a href="#URL_ARTICLE">[(#LOGO_ARTICLE||image_masque{masque2.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+            <span class="date">[(#DATE|nom_mois)] [(#DATE|annee)]</span>
+            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{34})]</a></h5>
+            <div class="clear"> </div>
+        	</div>
+            </BOUCLE_MOIS>
+        </div>
+        </BOUCLE_premierdumois>
+        </BOUCLE_articlem> 
+        <script type="text/javascript">
+            var stretchers = $$('div.accordion');
+            var togglers = $$('span.toggler');
+            new Accordion(togglers,stretchers, {show:0, alwaysHide: true});
+        </script>
+        <p></p>
+        <div class="ban">
+        <INCLURE{fond=include/ban-sky1}>
+        <INCLURE{fond=include/ban-sky2}>
+        </div>
+      </div>
+            </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>
+
+	<div class="clear"></div>
+</div>
+
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_accueil>

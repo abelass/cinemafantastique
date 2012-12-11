@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<INCLURE{fond=include/head-film}{id_film}>
+</head>
+<body>
+<div id="principal">
+    <INCLURE{fond=include/header}{id_rubrique=2}>
+	
+    <INCLURE{fond=include/menu}{id_rubrique=2}>
+	
+    <div id="contenu" >
+        <INCLURE{fond=include/cine-critique}{id_film}>
+        <div class="comment box1">
+        #FORMULAIRE_COMMENTAIRE_FILM
+        </div>
+    </div>
+	
+    <div id="colonne2">
+    	<!-- Amazon -->
+        <BOUCLE_RecupFilm(FILMS){id_film = #ENV{id_film}}>
+         [<div class="box1"><h4></h4><p style="text-align:center"><iframe src="(#SORTIE|textebrut)" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p></div>]
+         </BOUCLE_RecupFilm>
+    	
+        <!-- news -->    
+        <B_ne>
+        <div class="box1">
+        <h4>News</h4>
+        <ul>
+        <BOUCLE_ne(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
+        <B_news>
+		<BOUCLE_news(ARTICLES){id_article = #ID_ARTICLE}><BOUCLE_news2(ARTICLES){id_article}{id_rubrique=42}{par date}>
+			<li><a href="#URL_ARTICLE">[(#DATE|affdate_court) - ]#TITRE</a></li>
+		</BOUCLE_news2></BOUCLE_news>
+        </B_news>
+        
+        <//B_news>
+        </BOUCLE_ne>
+        </ul>
+        </div>
+         </B_ne>
+         <p>Pas de news associ&eacute;es � ce film actuellement</p>
+         <//B_ne>
+        
+        <!-- interview -->
+        <BOUCLE_Lien(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
+        <B_LesCritiques>
+        <div class="box1">
+        <h4>Interviews li&eacute;es</h4>
+        <ul>
+		<BOUCLE_LesCritiques(ARTICLES){id_article = #ID_ARTICLE}{id_rubrique=51}>
+			<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		</BOUCLE_LesCritiques>
+        </ul>
+        </div>
+        </B_LesCritiques>
+		</BOUCLE_Lien>
+        
+        <!-- galerie photos -->    	
+        <BOUCLE_Lien3(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
+        <B_galerie>
+			<div class="box1">
+			<h4>Galerie photos</h4>
+		<BOUCLE_galerie(ARTICLES){id_article = #ID_ARTICLE}{id_rubrique=102}>
+			<BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}><a href="[(#FICHIER|image_reduire{600}||extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+			</BOUCLE_listdoc>
+			<div style="clear: both;"> </div>
+			<div >
+			<a href="#URL_ARTICLE">Voir la galerie compl&egrave;te</a>
+			</div>
+		</BOUCLE_galerie>
+			</div>
+        </B_galerie>
+		</BOUCLE_Lien3>
+    	
+        <!--alphabet-->
+    	<div class="box1">
+    	<BOUCLE_alpha(ARTICLES){id_article=223}>
+        <h4>Database</h4>
+        [(#TEXTE)]
+        </BOUCLE_alpha>
+        </div>
+    	<!--critiques-->
+		<div class="box1">
+        <INCLURE{fond=include/cine-last-col}>
+        </div>
+    </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique=2}>
+
+	<div class="clear"></div>
+</div>
+
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>

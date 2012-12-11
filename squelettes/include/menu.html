@@ -1,0 +1,12 @@
+<div id="menu">
+<ul>
+<BOUCLE_rubriques(RUBRIQUES){racine}{par num titre}{id_rubrique!=6}>
+	<li id="menu_item#ID_RUBRIQUE" class="item1[(#EXPOSER|_down)]"><a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero)]</a>
+	<B_ss_rubriquea><ul class="item1_down">
+	<BOUCLE_ss_rubriquea(RUBRIQUES){id_parent}{par num titre}><li id="menu_item#ID_RUBRIQUE" class="item2[(#EXPOSER|_down)]"><a href="#URL_RUBRIQUE"> [(#TITRE|supprimer_numero)]</a>
+        </li></BOUCLE_ss_rubriquea> 
+	</ul></B_ss_rubriquea></li>
+</BOUCLE_rubriques>
+</ul>
+</div>
+<!--fin id="menu"-->

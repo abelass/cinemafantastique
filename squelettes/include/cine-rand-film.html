@@ -1,0 +1,20 @@
+<?php
+$sql="select  distinct c.* from spip_articles a,cinetic_movie c,lien_film_article l where l.id_article =a.id_article and l.id_film = c.id_film and a.statut like 'publie' and c.logo not like '' Order By RAND()  desc Limit 0,1";
+$res=mysql_query($sql);
+while($row=mysql_fetch_object($res)){	
+		echo '<a href="upload_film/'.$row->logo.'" ><img src="upload_film/'.$row->logo.'" alt="Affiche du film" class="onglet2"></a><br/>';
+		echo "<h4><a href='spip.php?page=critiques&amp;id_film=".utf8_encode ($row->id_film)."'><strong>".utf8_encode ( $row->title)."</strong></a></h4>";
+		if(!empty($row->scenario)){
+		echo "<p>".nl2br(substr(utf8_encode ( $row->scenario),0,150))."...</p>";
+		}
+		$query="select count(*) from lien_film_article l,spip_articles a where l.id_film = ".$row->id_film." and l.id_article = a.id_article and a.statut like 'publie'";
+				$resq=mysql_query($query);
+				$result=mysql_fetch_row($resq);
+				if($result[0]!=1){
+					echo '<br/><span class="critique"><a href="spip.php?page=critiques&amp;id_film='.$row->id_film.'">Consulter les '.$result[0].' critiques</a></span>';
+				}else{
+					echo '<br/<span class="critique"><a href="spip.php?page=critiques&amp;id_film='.$row->id_film.'">Consulter la critique</a></span>';
+				}	
+}
+
+?>

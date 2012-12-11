@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}>
+</head>
+<body>
+<div id="principal">
+<INCLURE{fond=include/header}>
+
+<INCLURE{fond=include/menu}>
+
+<INCLURE{fond=include/outils}>
+
+
+
+<div id="contenu">
+	<div id="chemin">Vous &ecirc;tes ici : <a href="#">Erreur 404</a></div>
+	<h3>Erreur 404</h3>
+	<p>D&eacute;sol&eacute;, il n'y a pas de contenu &agrave; cette adresse. </p>
+</div>	
+<INCLURE{fond=include/droite}>
+<div class="clear"></div>
+
+<INCLURE{fond=include/pied}>
+</body>
+</html>

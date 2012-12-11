@@ -1,0 +1,38 @@
+<BOUCLE_accueil(RUBRIQUES){id_rubrique}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body>
+<div id="principal">
+	<INCLURE{fond=include/header}{id_rubrique}>
+
+	<INCLURE{fond=include/menu}{id_rubrique}>
+
+    <div id="contenu" >
+        <INCLURE{fond=include/path}{id_rubrique}>
+        [<h3>(#TITRE|supprimer_numero)</h3>]
+        [<strong>(#DESCRIPTIF)</strong>]
+        [(#TEXTE|paragrapher)]
+        <BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}>
+        <div class="box1 event">
+        [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
+        [(#LOGO_ARTICLE|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]
+        
+        [<p class="chapeau">(#CHAPO)</p>]
+        <span class="more"><a href="#URL_ARTICLE">lire plus</a> | <BOUCLE_nbComm(FORUMS){id_article}></BOUCLE_nbComm></B_nbComm><a href="#URL_ARTICLE#commentaire">#TOTAL_BOUCLE<//B_nbComm> commentaires</a></span>
+        </div>
+        </BOUCLE_art1>
+    </div>
+	
+	<INCLURE{fond=include/colonne2}{id_rubrique}>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>		
+	<div class="clear"></div>
+	
+</div>
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_accueil>

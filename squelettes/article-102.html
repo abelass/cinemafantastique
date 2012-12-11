@@ -1,0 +1,32 @@
+<BOUCLE_accueil(ARTICLES){id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body>
+
+<div id="principal">
+    <INCLURE{fond=include/header}{id_rubrique}>
+    
+    <INCLURE{fond=include/menu}{id_rubrique}>
+
+	<div id="contenu" >
+		<INCLURE{fond=include/path}{id_rubrique}>
+        <div class="article">   
+            [<h3>(#TITRE|supprimer_numero)</h3>]
+            <BOUCLE_listdoc(DOCUMENTS){id_article}><a href="[(#FICHIER|image_reduire{1024}||extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a></BOUCLE_listdoc>
+        </div>
+	</div>
+
+	<INCLURE{fond=include/colonne2}{id_rubrique}>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>
+
+	<div class="clear"></div>
+</div>
+
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_accueil>

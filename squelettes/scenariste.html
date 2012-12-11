@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<INCLURE{fond=include/head}>
+</head>
+<body>
+<div id="principal">
+    <INCLURE{fond=include/header}{id_rubrique=2}>
+	
+    <INCLURE{fond=include/menu}{id_rubrique=2}>
+	
+    <div id="contenu" >
+        <INCLURE{fond=include/cine-scenariste}{id_scenariste}>
+    </div>
+	
+    <div id="colonne2">
+    	<!-- interview -->
+    	<!--alphabet-->
+    	<div class="box1">
+    	<BOUCLE_alpha(ARTICLES){id_article=223}>
+        <h4>Database</h4>
+        [(#TEXTE)]#LOGO
+        </BOUCLE_alpha>
+        </div>
+    	<!--critiques-->
+		<div class="box1">
+        <INCLURE{fond=include/cine-last-col}>
+        </div>
+    </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique=2}>
+
+	<div class="clear"></div>
+</div>
+
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>

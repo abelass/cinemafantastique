@@ -1,0 +1,75 @@
+<BOUCLE_accueil(ARTICLES){id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body style="padding-top: 280px;background: black no-repeat  50% 0px  url(http://pubs.ecranfantastique.net/www/delivery/avw.php?zoneid=342&amp;cb=<?php echo $i; ?>&amp;n=abd9dacb);">
+<div id="adClickMe" onclick="javascript:window.open('http://pubs.ecranfantastique.net/www/delivery/ck.php?zoneid=342&n=abd9dacb&amp;cb=<?php echo $i; ?>');">
+</div>
+
+<div id="principal">
+	<INCLURE{fond=include/header}{id_rubrique}>
+
+	<INCLURE{fond=include/menu}{id_rubrique}>
+
+	<div id="contenu" >
+		<INCLURE{fond=include/path}{id_rubrique}>
+        <BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
+        <div class="news">
+		[<h4>(#TITRE|supprimer_numero)</h4>]
+    	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
+        <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
+		[<div class="chapeau">(#CHAPO|paragrapher)</div>]
+		[(#TEXTE|paragrapher)]
+		[<div class="ps">(#PS)</div>]
+        </div>
+        <div class="ban">
+        <INCLURE{fond=include/ban-pave}>
+        </div>
+        <a name="commentaire"></a>
+		<B_messages> 
+        <div class="comment box1">
+        <h4>Commentaires</h4>	
+		<BOUCLE_messages(FORUMS){id_article}{par date}{inverse}>
+			<div class="comment">
+			[(#TEXTE|paragrapher)]
+			<div class="more">[(#DATE|affdate)]&nbsp;| Par [<a href="(#URL_SITE)">][(#NOM)]</a></div>
+			</div>
+		</BOUCLE_messages>
+        </div>
+		</B_messages>
+		<//B_messages>
+        <div class="comment box1">
+            <h4>Ajouter un commentaire</h4>
+            #FORMULAIRE_FORUM
+        </div>
+	</div>
+
+	<div id="colonne2">
+      <div class="box1">
+      	 <h4>Actualit&eacute;s</h4>
+        <BOUCLE_art(ARTICLES){id_rubrique}{par date}{inverse}{0,20}>
+        <div class="actu">
+            <B_listdoc><a href="#URL_ARTICLE"><BOUCLE_listdoc(DOCUMENTS){id_article}{0,1}>[(#FICHIER|image_masque{masque2.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</BOUCLE_listdoc></a></B_listdoc>
+            <span class="date">[(#DATE|affdate)]</span>
+            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{34})]</a></h5>
+            <div class="clear"> </div>
+        </div>
+        </BOUCLE_art>
+      </div>
+      <div class="ban">
+        <INCLURE{fond=include/ban-sky1}>
+        <INCLURE{fond=include/ban-sky2}>
+      </div>
+    </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>
+
+	<div class="clear"></div>
+</div>
+
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_accueil>

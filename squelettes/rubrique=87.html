@@ -1,0 +1,53 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<INCLURE{fond=include/head}{id_rubrique}>
+</head>
+<body>
+<div id="principal">
+	<INCLURE{fond=include/header}{id_rubrique}>
+
+	<INCLURE{fond=include/menu}{id_rubrique}>
+    
+    <div id="contenu" >
+		<INCLURE{fond=include/path}{id_rubrique}>
+    	[<h3>(#TITRE|supprimer_numero)</h3>]
+		[<strong>(#DESCRIPTIF)</strong>]
+        [(#TEXTE|paragrapher)]
+        <BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,5}{doublons}>
+        <div class="box1 event">
+        [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
+        [<img src="IMG/(#LOGO_ARTICLE|fichier)" alt="#TITRE" class="onglet3" />]
+        [<p class="chapeau">(#CHAPO|paragrapher)</p>]
+        <span class="more"><a href="#URL_ARTICLE">lire plus</a></span>
+        </div>
+        </BOUCLE_art1>
+	</div>
+
+	<div id="colonne2">
+    	<div class="box1">
+    	<h4>Toutes les Queens</h4>
+        <BOUCLE_art(ARTICLES){id_rubrique}{par date}{inverse}{0,20}>
+        <div class="actu">
+           <a href="#URL_ARTICLE">[(#LOGO_ARTICLE||image_masque{masque2.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+            <span class="date">[(#DATE|nom_mois)] [(#DATE|annee)]</span>
+            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{34})]</a></h5>
+            <div class="clear"> </div>
+        </div>
+        </BOUCLE_art>
+        <div class="ban">
+        <INCLURE{fond=include/ban-sky1}>
+        <INCLURE{fond=include/ban-sky2}>
+        </div>
+      </div>
+    </div>
+	<INCLURE{fond=include/colonne3}{id_rubrique}>
+	
+	<div class="clear"></div>
+</div>
+<INCLURE{fond=include/pied}>
+
+</body>
+</html>
+</BOUCLE_rub>
