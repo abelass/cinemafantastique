@@ -7,24 +7,31 @@
 </a>]
 	[<h4>(#TITLE|textebrut)</h4>]
 	[<h5>"(#TITLE_VO|textebrut)"</h5>]
-	<a href="plugins/cinetic/upload_film/#LOGO" ><img src="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" class="onglet1" alt="affiche du film"></a>
-	
+
+		  [(#LOGO_FILM|!={''}|?{
+		          <a href="[(#LOGO_FILM|extraire_attribut{src})]" >
+                [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet1}|inserer_attribut{alt,affiche du film})]
+                ,
+                <a href="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" >
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet1" alt="affiche du film" />]  
+                })]    
+                </a>
 	<ul>
 		[<li><strong>Genre : </strong>(#GENRE|textebrut)</li>]
 		[<li><strong>Ann&eacute;e de production : </strong>(#ANNEE|textebrut)</li>]
 		
 		<B_LesScenaristesDuFilm><li><strong>Sc&eacute;naristes : </strong>
-			<BOUCLE_LesScenaristesDuFilm(SCENARISTES_MOVIES){id_film=#ID_FILM}{", "}><BOUCLE_LeScenariste(SCENARISTES){id_scenariste = #ID_SCENARISTE}><a href="#URL_SCENARISTE">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeScenariste></BOUCLE_LesScenaristesDuFilm>
+			<BOUCLE_LesScenaristesDuFilm(SCENARISTES_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeScenariste(SCENARISTES){id_scenariste = #ID_SCENARISTE}><a href="#URL_SCENARISTE">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeScenariste></BOUCLE_LesScenaristesDuFilm>
 		</li></B_LesScenaristesDuFilm>[<li><strong>Sc&eacute;nariste : </strong>(#SCENARISTE|textebrut)</li>]
 		<//B_LesScenaristesDuFilm>
 		
 		<B_LesacteursDuFilm><li><strong>Acteurs : </strong>
-			<BOUCLE_LesacteursDuFilm(ACTEURS_MOVIES){id_film=#ID_FILM}{", "}><BOUCLE_LesActeurs(ACTEURS){id_acteur = #ID_ACTEUR}><a href="#URL_ACTEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LesActeurs></BOUCLE_LesacteursDuFilm>
+			<BOUCLE_LesacteursDuFilm(ACTEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LesActeurs(ACTEURS){id_acteur = #ID_ACTEUR}><a href="#URL_ACTEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LesActeurs></BOUCLE_LesacteursDuFilm>
 		</li></B_LesacteursDuFilm>[<li><strong>Casting : </strong>(#CASTING|textebrut)</li>]
 		<//B_LesacteursDuFilm>
 		
 		<B_LesRealisateursDuFilm><li><strong>R&eacute;alisateurs : </strong>
-			<BOUCLE_LesRealisateursDuFilm(REALISATEURS_MOVIES){id_film=#ID_FILM}{", "}><BOUCLE_LeRealisateurs(REALISATEURS){id_realisateur = #ID_REALISATEUR}><a href="#URL_REALISATEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeRealisateurs></BOUCLE_LesRealisateursDuFilm>
+			<BOUCLE_LesRealisateursDuFilm(REALISATEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeRealisateurs(REALISATEURS){id_realisateur = #ID_REALISATEUR}><a href="#URL_REALISATEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeRealisateurs></BOUCLE_LesRealisateursDuFilm>
 		</li></B_LesRealisateursDuFilm>[<li><strong>R&eacute;alisateur : </strong>(#REALISATEUR|textebrut)</li>]
 		<//B_LesRealisateursDuFilm>
 		[<li><strong>Pays d'origine : </strong>(#PAYS|textebrut)</li>]
@@ -64,9 +71,9 @@
         
 <div class="critique">
 <h4>Les critiques &agrave; propos de ce film</h4>
-<BOUCLE_Lien(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
+<BOUCLE_Lien(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
 	
-	<BOUCLE_LesCritiques(ARTICLES){id_article = #ID_ARTICLE}{id_rubrique!=51}{id_rubrique!=42}{id_rubrique!=102}>
+	<BOUCLE_LesCritiques(ARTICLES){id_article = #ID_OBJET}{id_rubrique!=51}{id_rubrique!=42}{id_rubrique!=102}>
 		<div class="critique ">
 			<h5>#TITRE </h5>
 			<span class="details" >Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
@@ -92,7 +99,7 @@
 	[(#ETOILES|=={5}|?{' ',''})<img src='/IMG/moton13.gif' alt="5 etoiles" /><br /><br />]
 	[(#COEUR|?{' ',''})<img src="#CHEMIN{/img_pack/emblem-favorite.png}" alt="coups de coeur" style="float: left;" /><:cinemalist:coups_de_coeur:><br /> <br />]
 			[(#DAUBE|?{' ',''})<img src="#CHEMIN{/img_pack/dialog-error.png}" alt="daube"/> <:cinemalist:daube:><br /><br />]
-	[(#TEXTE|paragrapher)]
+	[(#TEXTE)]
 	<div class="more">[(#DATE|affdate)]&nbsp;&agrave;&nbsp;[(#DATE|affdate{'H:m'})][&nbsp;| Par (#NOM)]</div>
 </div>
 </BOUCLE_LesComms>

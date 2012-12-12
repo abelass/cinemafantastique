@@ -8,8 +8,12 @@
 			[<li><strong>Date de naissance : </strong>(#DATE_NAISSANCE|affdate|!={0000}|?{[(#DATE_NAISSANCE|affdate)]})</li>]
 			[<li><strong>Date de mort : </strong>(#DATE_MORT|affdate|!={0000}|?{[(#DATE_NAISSANCE|affdate)]})</li>]
 		</ul>
-		[(#DESCRIPTIF|paragrapher)]
-		[<img src="(#LOGO|image_reduire{200})" style="float: right;width:200px;" />]
+		[(#DESCRIPTIF)]
+		[(#LOGO_ACTEUR|!={''}|?{
+                [(#LOGO_ACTEUR|image_reduire{200,*}|inserer_attribut{class,onglet1}|inserer_attribut{alt,image acteur})]
+                ,
+                [<img src="(#LOGO|image_reduire{200})" style="float: right;width:200px;" alt="affiche du film" />]  
+                })]
 	</div>
 	
 	<INCLURE{fond=include/cine-acteur-films}{id_acteur}/>

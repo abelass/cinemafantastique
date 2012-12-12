@@ -14,12 +14,12 @@
         <INCLURE{fond=include/path}{id_rubrique}>
         [<h3>(#TITRE|supprimer_numero)</h3>]
         [<strong>(#DESCRIPTIF)</strong>]
-        [(#TEXTE|paragrapher)]
+        [(#TEXTE)]
         <BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,5}{doublons}>
         <div class="box1 event">
         [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
         [<img src="IMG/(#LOGO_ARTICLE|fichier)" alt="#TITRE" class="onglet3" />]
-        [<p class="chapeau">(#CHAPO|paragrapher)</p>]
+        [<p class="chapeau">(#CHAPO)</p>]
         <span class="more"><a href="#URL_ARTICLE">lire plus</a>  | <BOUCLE_nbComm(FORUMS){id_article}></BOUCLE_nbComm></B_nbComm><a href="#URL_ARTICLE#commentaire">#TOTAL_BOUCLE<//B_nbComm> commentaires</a></span>
         </div>
         </BOUCLE_art1>

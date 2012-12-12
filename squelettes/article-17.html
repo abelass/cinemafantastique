@@ -17,8 +17,8 @@
 		[<h3>(#TITRE|supprimer_numero)</h3>]
     	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
         <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
-		[<div class="chapeau">(#CHAPO|paragrapher)</div>]
-		[(#TEXTE|paragrapher)]
+		[<div class="chapeau">(#CHAPO)</div>]
+		[(#TEXTE)]
 		[<div class="ps">(#PS)</div>]
         
         <!-- commentaire -->
@@ -28,7 +28,7 @@
         <h3>Commentaires</h3>	
 		<BOUCLE_messages(FORUMS){id_article}{par date}{inverse}>
 			<div class="comment">
-			[(#TEXTE|paragrapher)]
+			[(#TEXTE)]
 			<div class="more">[(#DATE|affdate)]&nbsp;| Par [<a href="(#URL_SITE)">][(#NOM)]</a></div>
 			</div>
 		</BOUCLE_messages>

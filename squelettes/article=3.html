@@ -14,12 +14,18 @@
     <div id="contenu" >
         <INCLURE{fond=include/path}{id_rubrique}>
         <h3>Critique de film</h3>
-        <BOUCLE_lien(LIEN_FILM_ARTICLE){id_article = #ID_ARTICLE}>
-        <BOUCLE_NomFilm(FILMS){id_film = #ID_FILM}>
+        <BOUCLE_lien(FILMS_LIENS){id_objet = #ID_ARTICLE}{objet=article}>
+        <BOUCLE_NomFilm(FILMS){id_film=#ID_FILM}>
         <div class="box1 film">
         [<h3>(#TITLE|textebrut)</h3>]
         [<h5>"(#TITLE_VO|textebrut)"</h5>]
-        <a href="plugins/cinetic/upload_film/#LOGO" ><img src="plugins/cinetic/upload_film/#LOGO" class="onglet1" alt="affiche du film"></a>
+         [(#LOGO_FILM|!={''}|?{
+             <a href="[(#LOGO_FILM|extraire_attribut{src})]" >
+                [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet1}|inserer_attribut{alt,affiche du film})]
+                ,
+                <a href="plugins/cinetic/upload_film/#LOGO" >
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO}|image_reduire{160})" class="onglet1" alt="affiche du film" />]  
+                })]
         <ul>
             [<li><strong>Genre : </strong>(#GENRE|textebrut)</li>]
             [<li><strong>Ann&eacute;e de production : </strong>(#ANNEE|textebrut)</li>]
@@ -56,8 +62,8 @@
         [<h5>(#TITRE|supprimer_numero)</h5>]
         <span class="details" >Par&nbsp;:&nbsp;#LESAUTEURS</span>
         <BOUCLE_motscle(MOTS){id_article}{"<br />"}>#LOGO_MOT<br/></BOUCLE_motscle>
-        [<div class="chapeau">(#CHAPO|paragrapher)</div>]
-        [(#TEXTE|paragrapher)]
+        [<div class="chapeau">(#CHAPO)</div>]
+        [(#TEXTE|)]
         </div>
 	
 	</div>

@@ -1,14 +1,17 @@
-<B_Acteur_Film>
+
+<B_acteur>
 	<div class="critique">
 		<h4>Les films de cet acteur</h4>
 		<table class="spip" style="width: 100%" >
-			<BOUCLE_Acteur_Film(FILMS spip_acteurs_movies){par annee}{id_acteur = #ID_ACTEUR} >
+    <BOUCLE_acteur(ACTEURS_LIENS){id_acteur}{objet=film}>
+			<BOUCLE_acteur_film(FILMS){par annee}{id_film=#ID_OBJET} >
 				
 				<tr style="background: [(#COMPTEUR_BOUCLE|alterner{#4D4D4D,#7F7F7F})], border-collapse: collapse;" >
 					<td><a href="#URL_FILM">#TITLE&nbsp;[((#TITLE_VO))]</a></td><td>#ANNEE</td>
 				</tr>
 				
-			</BOUCLE_Acteur_Film>
+			</BOUCLE_acteur_film>
+    </BOUCLE_acteur>
 		</table>
 	</div>
-</B_Acteur_Film>
+</B_acteur>

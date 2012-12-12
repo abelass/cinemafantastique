@@ -8,8 +8,13 @@
 			[<li><strong>Date de naissance : </strong>(#DATE_NAISSANCE|affdate|!={0000}|?{[(#DATE_NAISSANCE|affdate)]})</li>]
 			[<li><strong>Date de mort : </strong>(#DATE_MORT|affdate|!={0000}|?{[(#DATE_NAISSANCE|affdate)]})</li>]
 		</ul>
-		[(#DESCRIPTIF|paragrapher)]
-		[<img src="(#LOGO|image_reduire{200})" style="float: right;width:200px;" />]
+		[(#DESCRIPTIF)]
+		
+		[(#LOGO_SCENARISTE|!={''}|?{
+                [(#LOGO_SCENARISTE|image_reduire{200,*}|inserer_attribut{style,float: right}|inserer_attribut{alt,affiche du film})]
+                ,
+                [<img src="(#LOGO|image_reduire{200})" style="float: right;width:200px;" />] 
+                })]
 	</div>
 	
 	<INCLURE{fond=include/cine-scenariste-films}{id_scenariste}/>

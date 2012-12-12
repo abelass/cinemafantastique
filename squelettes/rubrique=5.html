@@ -15,12 +15,18 @@
     <div class="box1">
 	[<h3>(#TITRE|supprimer_numero)</h3>]
 	[<strong>(#DESCRIPTIF)</strong>]
-	[(#TEXTE|paragrapher)]
+	[(#TEXTE)]
 	<BOUCLE_articles(ARTICLES){id_rubrique}>
-	<BOUCLE_lien(LIEN_FILM_ARTICLE){id_article = #ID_ARTICLE}>
+	<BOUCLE_lien(FILMS_LIENS){id_objet = #ID_ARTICLE}{objet=article}>
 	<BOUCLE_NomFilm(FILMS){id_film = #ID_FILM}>
 	<dl class="jaquette">
-	<dt><a href="#URL_FILM"><img src="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" class="onglet3"  alt="Affiche du film #TITLE" /></a></dt>
+	<dt><a href="#URL_FILM">
+	    [(#LOGO_FILM|!={''}|?{
+                [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
+                ,
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet3" alt="affiche du film" />]  
+          })]
+	 </dt>
 	<dd>[<strong>(#TITLE|textebrut)</strong>]<br />[<em>(#TITLE_VO|textebrut)</em>]</dd>
 	</dl>
 	</BOUCLE_NomFilm>

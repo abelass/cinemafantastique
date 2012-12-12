@@ -22,7 +22,7 @@
         <dt class="toggler"><a href="javascript:;">Voir ses derni&egrave;res critiques</a></dt>
         <dd class="accordion">
         <BOUCLE_articles(ARTICLES) {id_auteur}{par date}{inverse}{0,20}>
-            <BOUCLE_RecupFilm(LIEN_FILM_ARTICLE){id_article = #ID_ARTICLE}>
+            <BOUCLE_RecupFilm(FILMS_LIENS){id_objet = #ID_ARTICLE}{objet=article}>
             <BOUCLE_NomFilm(FILMS){id_film = #ID_FILM}>
                 [<img src="[(#CHEMIN{assets/ico_main.gif})]" alt="" /> <a href="spip.php?page=critiques&id_film=#ID_FILM">(#TITLE)</a><br />]
             </BOUCLE_NomFilm>
