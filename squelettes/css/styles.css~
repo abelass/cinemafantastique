@@ -797,5 +797,4 @@ padding:5px;
 text-transform:uppercase;
 }
 
-.prev .forum-texte, .prev .forum-chapo{padding:5px; width:400px;}
-.formulaire_inscription input.forml{width:auto;}
+.prev .forum-texte, .prev .forum-chapo{padding:5px; width:400;}

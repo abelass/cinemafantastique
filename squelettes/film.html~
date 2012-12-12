@@ -8,12 +8,14 @@
     <INCLURE{fond=include/header}{id_rubrique=2}>
 	
     <INCLURE{fond=include/menu}{id_rubrique=2}>
+	
     <div id="contenu" >
         <INCLURE{fond=include/cine-critique}{id_film}>
-        <div class="comment box1">
+        <div class="comment box1">#ENV{id_film}
         #FORMULAIRE_COMMENTAIRE_FILM{#ENV{id_film}}
         </div>
     </div>
+	
     <div id="colonne2">
     	<!-- Amazon -->
         <BOUCLE_RecupFilm(FILMS){id_film}>
@@ -25,9 +27,9 @@
         <div class="box1">
         <h4>News</h4>
         <ul>
-        <BOUCLE_ne(LIEN_FILM_ARTICLE){id_film}>
+        <BOUCLE_ne(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
         <B_news>
-		<BOUCLE_news(ARTICLES){id_article}><BOUCLE_news2(ARTICLES){id_article}{id_rubrique=42}{par date}>
+		<BOUCLE_news(ARTICLES){id_article = #ID_ARTICLE}><BOUCLE_news2(ARTICLES){id_article}{id_rubrique=42}{par date}>
 			<li><a href="#URL_ARTICLE">[(#DATE|affdate_court) - ]#TITRE</a></li>
 		</BOUCLE_news2></BOUCLE_news>
         </B_news>
@@ -38,7 +40,7 @@
         </div>
          </B_ne>
          <p>Pas de news associ&eacute;es � ce film actuellement</p>
-         <//B_news>
+         <//B_ne>
         
         <!-- interview -->
         <BOUCLE_Lien(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
@@ -53,14 +55,14 @@
         </div>
         </B_LesCritiques>
 		</BOUCLE_Lien>
-
+        
         <!-- galerie photos -->    	
         <BOUCLE_Lien3(LIEN_FILM_ARTICLE){id_film = #ENV{id_film}}>
         <B_galerie>
 			<div class="box1">
 			<h4>Galerie photos</h4>
 		<BOUCLE_galerie(ARTICLES){id_article = #ID_ARTICLE}{id_rubrique=102}>
-			<BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}{tout}><a href="[(#FICHIER|image_reduire{600}|extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+			<BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}><a href="[(#FICHIER|image_reduire{600}||extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
 			</BOUCLE_listdoc>
 			<div style="clear: both;"> </div>
 			<div >
@@ -80,7 +82,7 @@
         </div>
     	<!--critiques-->
 		<div class="box1">
-        <INCLURE{fond=include/cine-last-col}{env}>
+        <INCLURE{fond=include/cine-last-col}>
         </div>
     </div>
 	<INCLURE{fond=include/colonne3}{id_rubrique=2}>
