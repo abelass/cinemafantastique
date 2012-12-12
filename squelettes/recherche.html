@@ -18,11 +18,11 @@
         <dl>
         <BOUCLE_critiques(ARTICLES){recherche}{id_rubrique=2}{doublons}{par date}{inverse}>
             <dt><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></dt>
-            <dd>[(#INTRODUCTION|paragrapher|couper{75})]</dd>
+            <dd>[(#INTRODUCTION|couper{75})]</dd>
         </BOUCLE_critiques>
         </dl>
         </B_critiques>
-        <p>Pas de critique trouvée pour cette recherche</p>
+        <p>Pas de critique trouvÃ©e pour cette recherche</p>
         <//B_critiques>
         
         
@@ -55,7 +55,7 @@
         <dl>
         <BOUCLE_articlesAA(ARTICLES){recherche}{doublons}{par points}{inverse}>
             <dt><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></dt>
-            <dd>[(#INTRODUCTION|paragrapher|couper{75})]</dd>
+            <dd>[(#INTRODUCTION|couper{75})]</dd>
         </BOUCLE_articlesAA>
         </dl>
         </B_articlesAA>
