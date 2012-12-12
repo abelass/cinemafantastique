@@ -6,14 +6,11 @@
 	<dl class="jaquette">
 	<dt><a href="#URL_FILM">
   [(#LOGO_FILM|!={''}|?{
-                  <a href="[(#LOGO_FILM|extraire_attribut{src})]" >
                 [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
                 ,
-                <a href="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" >
                 [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet3" alt="affiche du film" />]  
                 })]    
-                </a>
-	    
+
 	    </a></dt>
 	<dd>[<strong>(#TITLE|textebrut)</strong>]<br />[<em>(#TITLE_VO|textebrut)</em>]</dd>
 	</dl>
