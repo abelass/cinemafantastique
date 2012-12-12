@@ -18,6 +18,44 @@
         </div>
     </div>
     <div id="colonne2">
+        
+                <!-- galerie photos -->     
+        <BOUCLE_Lien3(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
+        <B_galerie>
+            <div class="box1">
+            <h4>Galerie photos</h4>
+        <BOUCLE_galerie(ARTICLES){id_article = #ID_OBJET}{id_rubrique=102}>
+            <BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}{tout}><a href="[(#FICHIER|image_reduire{600}|extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+            </BOUCLE_listdoc>
+            <div style="clear: both;"> </div>
+            <div >
+            <a href="#URL_ARTICLE">Voir la galerie compl&egrave;te</a>
+            </div>
+        </BOUCLE_galerie>
+            </div>
+        </B_galerie>
+        
+          <!-- le trailer -->     
+        <B_trailer>
+            <div class="box1">
+            <h4>Trailer</h4>
+        <BOUCLE_trailer(ARTICLES){id_article = #ID_OBJET}{id_rubrique=118}{0,0}>
+            <div style="width:50px;">
+            
+            <a href="#URL_ARTICLE">Voir le trailer</a>
+            </div>
+        </BOUCLE_trailer>
+            </div>
+        </B_trailer>
+        
+        </BOUCLE_Lien3>
+        
+              
+
+
+
+        
+        
     	<!-- Amazon -->
         <BOUCLE_RecupFilm(FILMS){id_film}>
          [<div class="box1"><h4></h4><p style="text-align:center"><iframe src="(#SORTIE|textebrut)" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p></div>]
@@ -57,22 +95,7 @@
         </B_LesCritiques>
 		</BOUCLE_Lien>
 
-        <!-- galerie photos -->    	
-        <BOUCLE_Lien3(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
-        <B_galerie>
-			<div class="box1">
-			<h4>Galerie photos</h4>
-		<BOUCLE_galerie(ARTICLES){id_article = #ID_OBJET}{id_rubrique=102}>
-			<BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}{tout}><a href="[(#FICHIER|image_reduire{600}|extraire_attribut{'src'})]" rel="lightbox-galerie">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
-			</BOUCLE_listdoc>
-			<div style="clear: both;"> </div>
-			<div >
-			<a href="#URL_ARTICLE">Voir la galerie compl&egrave;te</a>
-			</div>
-		</BOUCLE_galerie>
-			</div>
-        </B_galerie>
-		</BOUCLE_Lien3>
+
     	
         <!--alphabet-->
     	<div class="box1">
