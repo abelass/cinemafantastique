@@ -21,11 +21,7 @@
 	    
 	    <B_LesRealisateursDuFilm>
 	    <li><strong>R&eacute;alisateurs : </strong>
-            <BOUCLE_LesRealisateursDuFilm(REALISATEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}>
-                <BOUCLE_LeRealisateurs(REALISATEURS){id_realisateur = #ID_REALISATEUR}>
-                    <a href="#URL_REALISATEUR">[(#PRENOM)&nbsp;]#NOM</a>
-                </BOUCLE_LeRealisateurs>
-             </BOUCLE_LesRealisateursDuFilm>
+            <BOUCLE_LesRealisateursDuFilm(REALISATEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeRealisateurs(REALISATEURS){id_realisateur = #ID_REALISATEUR}><a href="#URL_REALISATEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeRealisateurs></BOUCLE_LesRealisateursDuFilm>
         </li>
         </B_LesRealisateursDuFilm>
             [<li><strong>R&eacute;alisateur : </strong>(#REALISATEUR|textebrut)</li>]
@@ -33,11 +29,7 @@
         
         <B_LesScenaristesDuFilm>
         <li><strong>Sc&eacute;naristes : </strong>
-            <BOUCLE_LesScenaristesDuFilm(SCENARISTES_LIENS){id_objet=#ID_FILM}{objet=film}{", "}>
-                <BOUCLE_LeScenariste(SCENARISTES){id_scenariste = #ID_SCENARISTE}>
-                    <a href="#URL_SCENARISTE">[(#PRENOM)&nbsp;]#NOM</a>
-                    </BOUCLE_LeScenariste>
-                </BOUCLE_LesScenaristesDuFilm>
+            <BOUCLE_LesScenaristesDuFilm(SCENARISTES_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeScenariste(SCENARISTES){id_scenariste = #ID_SCENARISTE}><a href="#URL_SCENARISTE">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeScenariste></BOUCLE_LesScenaristesDuFilm>
         </li>
         </B_LesScenaristesDuFilm>
             [<li><strong>Sc&eacute;nariste : </strong>(#SCENARISTE|textebrut)</li>]
@@ -45,11 +37,7 @@
         
         <B_LesacteursDuFilm>
         <li><strong>Acteurs : </strong>
-            <BOUCLE_LesacteursDuFilm(ACTEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}>
-                <BOUCLE_LesActeurs(ACTEURS){id_acteur = #ID_ACTEUR}>
-                    <a href="#URL_ACTEUR">[(#PRENOM)&nbsp;]#NOM</a>
-                </BOUCLE_LesActeurs>
-            </BOUCLE_LesacteursDuFilm>
+            <BOUCLE_LesacteursDuFilm(ACTEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LesActeurs(ACTEURS){id_acteur = #ID_ACTEUR}><a href="#URL_ACTEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LesActeurs></BOUCLE_LesacteursDuFilm>
         </li>
         </B_LesacteursDuFilm>
             [<li><strong>Casting : </strong>(#CASTING|textebrut)</li>]
