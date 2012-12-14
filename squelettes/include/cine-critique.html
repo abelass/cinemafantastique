@@ -55,19 +55,8 @@
 	</ul>
 	
 	
-	<?php
-	function unhtmlentities($string)
-	{
-   // replace numeric entities
-   $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
-   $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
-   // replace literal entities
-   $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-   $trans_tbl = array_flip($trans_tbl);
-   return strtr($string, $trans_tbl);
-	}
-	?>
-	<p><em><?php echo unhtmlentities("[(#SYNOPSIS)]"); ?></em></p>
+
+	<p><em>#SYNOPSIS</em></p>
 	<!-- PriceMinister -->
 	[<p style="text-align:center"><a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12322004&url=http://www.priceminister.com/nav/Video/kw/(#TITLE|replace{' ', '+'})" target="_blank"><img src="http://track.effiliation.com/servlet/effi.show?id_compteur=12329515" alt="pub" border="0" /></a></p>]
 	</div>
