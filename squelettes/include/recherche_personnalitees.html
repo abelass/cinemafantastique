@@ -16,7 +16,7 @@
                  ]
                [(#TOTAL_BOUCLE|>{1}|oui)
                [(#VALEUR{logo}|oui)#SET{logo,#VALEUR{logo}}]
-                <a href="#VALEUR{url}" title="#GET{nom}-#CLE">#CLE</a>
+                <a href="#VALEUR{url}" title="#GET{nom}-[(#VAL{#CLE:titre_#CLE}|_T)]">[(#VAL{#CLE:titre_#CLE}|_T)]</a>
                  ]   
             
             </BOUCLE_personnalite>
