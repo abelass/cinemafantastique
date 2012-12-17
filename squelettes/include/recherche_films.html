@@ -1,17 +1,17 @@
 <B_films>
-<h4>#TITRE([(#GRAND_TOTAL)])</h4>
+<h4>Films([(#GRAND_TOTAL)])</h4>
 [<p class="pagination">(#PAGINATION)</p>]          
 <ul class="liste_recherche">
-<BOUCLE_films(FILMS){title LIKE%(#RECHERCHE)}{pagination 20}{par title}{inverse}>
+<BOUCLE_films(FILMS){title LIKE%#ENV{recherche}%}{pagination 20}{par title}{inverse}>
     <li class="item">
            [(#LOGO_FILM|!={''}|?{
-                [(#LOGO_ACTEUR|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
+                [(#LOGO_FILM|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
                 ,
-                [(#LOGO|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
+                [(#CHEMIN{IMG/logos_films/#LOGO}|image_reduire{100,*}|inserer_attribut{class,spip_logos}|inserer_attribut{alt,#TITLE})]
                 })]
-           <a href="#URL_ARTICLE">[(#TITLE|supprimer_numero)]</a> 
+           <a href="#URL_FILM">[(#TITLE|supprimer_numero)]</a> 
            [<div class="date">(#DATE|affdate_court)</div>]
-           [(#INTRODUCTION{150})]
+           [<p>(#SYNOPSIS|JsToDb|couper{150}|propre|couper{150})</p>]
     </li>
    
 </BOUCLE_films>
