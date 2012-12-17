@@ -10,63 +10,11 @@
 
 	<INCLURE{fond=include/menu}>
 
-    <div id="contenu" >
-    	<h3>R&eacute;sultats de la recherche</h3>	
-    	
-    	   <B_RechActeurs><h4>Les acteurs trouv&eacute;s  ([(#TOTAL_BOUCLE)])</h4>
-        <BOUCLE_RechActeurs(ACTEURS){statut!=poubelle}{nom LIKE %#RECHERCHE%}>
-            <dt><a href="#URL_ACTEUR">#NOM #PRENOM</a></dt>
-        </BOUCLE_RechActeurs>
-        <BOUCLE_RechActeurspre(ACTEURS){statut!=poubelle}{prenom LIKE %#RECHERCHE%}{"<br />"}>
-            <dt><a href="#URL_ACTEUR">#NOM #PRENOM</a></dt>
-        </BOUCLE_RechActeurspre><br /><br />
-        <B_Rechscenaristes><h4>Les scenaristes trouv&eacute;s  ([(#TOTAL_BOUCLE)])</h4>
-        <BOUCLE_Rechscenaristes(SCENARISTES){statut!=poubelle}{nom LIKE %#RECHERCHE%}>
-            <dt><a href="#URL_SCENARISTE">#NOM #PRENOM</a></dt>
-        </BOUCLE_Rechscenaristes>
-        <BOUCLE_Rechscenaristespre(SCENARISTES){statut!=poubelle}{prenom LIKE %#RECHERCHE%}{"<br />"}>
-            <dt><a href="#URL_SCENARISTE">#NOM #PRENOM</a></dt>
-        </BOUCLE_Rechscenaristespre><br /><br />
-        <B_Rechrealisteurs><h4>Les r&eacute;alisateurs trouv&eacute;s  ([(#TOTAL_BOUCLE)])</h4>
-        <BOUCLE_Rechrealisteurs(REALISATEURS){statut!=poubelle}{nom LIKE %#RECHERCHE%}>
-            <dt><a href="#URL_REALISATEUR">#NOM #PRENOM</a></dt>
-        </BOUCLE_Rechrealisteurs>
-        <BOUCLE_Rechrealisteurspre(REALISATEURS){statut!=poubelle}{prenom LIKE %#RECHERCHE%}{"<br />"}>
-            <dt><a href="#URL_REALISATEUR">#NOM #PRENOM</a></dt>
-        </BOUCLE_Rechrealisteurspre>
-        
-        <!-- Articles trouves -->
-        <B_critiques>
-        <h4>Critiques de film ([(#TOTAL_BOUCLE)])</h4>			
-        <dl>
-        <BOUCLE_critiques(ARTICLES){recherche}{id_rubrique=2}{doublons}{par date}{inverse}>
-            <dt><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></dt>
-            <dd>[(#INTRODUCTION|couper{75})]</dd>
-        </BOUCLE_critiques>
-        </dl>
-        </B_critiques>
-        <p>Pas de critique trouvée pour cette recherche</p>
-        <//B_critiques>
-        
-        
-		
-	
-		
-		<!-- Articles trouves -->
-        <B_articlesAA>
-        <h4>Autres r&eacute;sultats ([(#TOTAL_BOUCLE)])</h4>			
-        <dl>
-        <BOUCLE_articlesAA(ARTICLES){recherche}{doublons}{par points}{inverse}>
-            <dt><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></dt>
-            <dd>[(#INTRODUCTION|couper{75})]</dd>
-        </BOUCLE_articlesAA>
-        </dl>
-        </B_articlesAA>
-        <p>Pas de r&eacute;sultats pour cette recherche</p>
-        <//B_articlesAA>
-    </div>
+    [(#REM) La recherche]
+    <INCLURE{fond=include/recherche,env,ajax}>
 
 	<INCLURE{fond=include/colonne2}{id_rubrique}>
+	
 	<INCLURE{fond=include/colonne3}{id_rubrique}>
 	
 	<div class="clear"></div>

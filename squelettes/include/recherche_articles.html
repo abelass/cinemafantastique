@@ -1,0 +1,16 @@
+<!-- Articles trouves -->
+<B_critiques>
+<h4>#TITRE([(#GRAND_TOTAL)])</h4>
+[<p class="pagination">(#PAGINATION)</p>]          
+<ul class="liste_recherche">
+<BOUCLE_critiques(ARTICLES){recherche}{id_rubrique ?} {id_rubrique !=#ENV{exclu,0}}{pagination 20}{par date}{inverse}>
+    <li class="item">
+            [(#LOGO_ARTICLE|image_reduire{100,*})]
+           <a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a> 
+           [<div class="date">(#DATE|affdate_court)</div>]
+           [(#INTRODUCTION{150})]
+    </li>
+   
+</BOUCLE_critiques>
+</ul>
+</B_critiques>

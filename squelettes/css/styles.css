@@ -788,7 +788,9 @@ div.important{
 	font-weight: bold;
 }
 
-/*rainer*/
+/*
+ * Rainer
+ */
 .formulaire_forum ul li{background:transparent none no-repeat left 2px; list-style:none; padding-left:0}
 .formulaire_forum textarea, .formulaire_forum input{
 width:420px;
@@ -811,3 +813,31 @@ text-transform:uppercase;
 
 .prev .forum-texte, .prev .forum-chapo{padding:5px; width:400px;}
 .formulaire_inscription input.forml{width:98%;}
+
+/*Moteur de recherche*/
+
+.recherche .vignette{
+	width:90px; 
+	height: 90px; 
+	background:#CC0000; 
+	float:left; 
+	margin:5px;
+	position:relative}
+
+.vignette .liens {display:none; padding:5px}
+
+.vignette span{padding:5px;display:block}
+
+.vignette a{color:#FFFFFF; padding:5px; display:block}
+
+.vignette:hover .liens{display:block; position:absolute; width:80px; height: 80px; background:#CC0000}
+
+.recherche  .more{clear:both}
+
+.recherche h4{clear:both}
+
+.liste_recherche .spip_logos{float:left;margin: 0 5px 5px 0}
+
+.liste_recherche .details{padding : 0 5px}
+
+.liste_recherche .item{clear:both}

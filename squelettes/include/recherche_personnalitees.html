@@ -1,0 +1,38 @@
+[(#REM) Affichage du résultat des personnalitées]
+<B_personnalitees>
+            <h4>Personnalitées ([(#ENV{personnalites}|count)])</h4>
+            [<p class="pagination">(#PAGINATION)</p>]
+        <BOUCLE_personnalitees(DATA){source tableau,#ENV{personnalites}}{pagination 4}>
+            #SET{nom,#CLE}
+            #SET{logo,''}
+           <B_personnalite>
+            <div class="vignette">
+                [(#TOTAL_BOUCLE|>{1}|oui)<div class="liens">]
+            <BOUCLE_personnalite(DATA){source tableau,#VALEUR}>
+            [(#TOTAL_BOUCLE|=={1}|oui)
+                <a href="#VALEUR{url}" title="#GET{nom}">
+                [(#VALEUR{logo}|image_passe_partout{90,90}|image_recadre{50,50}|inserer_attribut{alt,#GET{nom}}|sinon{#GET{nom}})]
+                </a>
+                 ]
+               [(#TOTAL_BOUCLE|>{1}|oui)
+               [(#VALEUR{logo}|oui)#SET{logo,#VALEUR{logo}}]
+                <a href="#VALEUR{url}" title="#GET{nom}-#CLE">#CLE</a>
+                 ]   
+            
+            </BOUCLE_personnalite>
+            [(#TOTAL_BOUCLE|>{1}|oui)</div>
+            [(#GET{logo}|image_passe_partout{90,90}|image_recadre{90,90}|inserer_attribut{alt,#GET{nom}}|sinon{<span>#GET{nom}</span>})]
+            ]
+            </B_personnalite>
+                      
+            </div>
+        </B_personnalite>
+        </BOUCLE_personnalitees>
+        [(#TOTAL_BOUCLE|>{4}|oui)
+            [(#ENV{limite_personnalite}|?{
+              <div class="more"><a class="ajax" href="[(#SELF|parametre_url{limite_personnalite,''})]">Moins de résultats</a></div>   
+                ,
+                <div class="more"><a class="ajax" href="[(#SELF|parametre_url{limite_personnalite,1000})]">Plus de résultats</a></div>   
+            })]
+        ]
+</B_personnalitees>    

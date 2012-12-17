@@ -1,0 +1,19 @@
+<B_films>
+<h4>#TITRE([(#GRAND_TOTAL)])</h4>
+[<p class="pagination">(#PAGINATION)</p>]          
+<ul class="liste_recherche">
+<BOUCLE_films(FILMS){title LIKE%(#RECHERCHE)}{pagination 20}{par title}{inverse}>
+    <li class="item">
+           [(#LOGO_FILM|!={''}|?{
+                [(#LOGO_ACTEUR|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
+                ,
+                [(#LOGO|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
+                })]
+           <a href="#URL_ARTICLE">[(#TITLE|supprimer_numero)]</a> 
+           [<div class="date">(#DATE|affdate_court)</div>]
+           [(#INTRODUCTION{150})]
+    </li>
+   
+</BOUCLE_films>
+</ul>
+</B_films>

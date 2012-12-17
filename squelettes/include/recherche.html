@@ -1,0 +1,126 @@
+<div id="contenu" class="recherche">
+        <h3>R&eacute;sultats de la recherche</h3>
+        
+        [(#REM)
+        Composer un tableau des acteurs, réalisateurs et scénariste pour un affiche par points
+        ]   
+        
+        #SET{personnalites,#ARRAY}
+        
+        <BOUCLE_RechActeurs(ACTEURS){recherche}{!par points}{0,#ENV{limite_personnalite,10}}>
+        #SET{logo,''}
+            [(#LOGO_ACTEUR|!={''}|?{
+                #SET{logo,#LOGO_ACTEUR|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]
+        
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                            acteur,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_ACTEUR,
+                                logo,#GET{logo},
+                                }
+                            }
+                        }   
+                    }
+                }
+        </BOUCLE_RechActeurs>
+        
+
+
+
+        <BOUCLE_Rechscenaristes(SCENARISTES){recherche}{!par points}{0,#ENV{limite_personnalite,10}}>
+        #SET{logo,''}
+            [(#LOGO_SCENARISTE|!={''}|?{
+                #SET{logo,#LOGO_SCENARISTE|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]
+       [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                            #ARRAY{scenariste,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_SCENARISTE,
+                                logo,#GET{logo},
+                                }
+                             }
+                           }                     
+                        }
+                   }
+                }
+              
+           ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                            scenariste,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_SCENARISTE,
+                                logo,#GET{logo},
+                                }
+                            }
+                        }   
+                    }
+                }
+            ]
+        </BOUCLE_Rechscenaristes>
+        
+        <BOUCLE_Rechrealisteurs(REALISATEURS){recherche}{!par points}{0,#ENV{limite_personnalite,10}}>
+        #SET{logo,''}
+            [(#LOGO_REALISATEUR|!={''}|?{
+                #SET{logo,#LOGO_REALISATEUR|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]        
+         [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                            #ARRAY{realisateur,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_REALISATEUR,
+                                logo,#GET{logo},
+                                }
+                             }
+                          }                     
+                       }
+                    }
+                }
+              ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                            realisateur,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_REALISATEUR,
+                                logo,#GET{logo},
+                                }
+                            }
+                        }   
+                    }
+                }
+            ]
+        </BOUCLE_Rechrealisteurs>
+     
+    [(#REM) Affichage du résultat des personnalitées]    
+    <INCLURE{fond=include/recherche_personnalitees,personnalites=#GET{personnalites},env,ajax}/>
+      
+      
+[(#REM) recherche sur les articles]      
+     
+    [(#REM)Les News]       
+    <INCLURE{fond=include/recherche_articles,id_rubrique=42,titre=News,env,ajax}/>
+    
+    [(#REM)Les News]       
+    <INCLURE{fond=include/recherche_articles,exclu=42,titre=Autres,env,ajax}/>
+    
+    [(#REM)Les News]       
+    <INCLURE{fond=include/recherche_films,env,ajax}/>
+    </div>
