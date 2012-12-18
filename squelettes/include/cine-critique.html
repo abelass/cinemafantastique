@@ -67,18 +67,27 @@
         
 <div class="critique">
 <h4>Les critiques &agrave; propos de ce film</h4>
-<BOUCLE_Lien(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
+
+    <BOUCLE_Lestrailers(ARTICLES films_liens){id_film}{id_rubrique=118}{doublons}{!par date}>
+        <div class="critique ">
+            <h5>#TITRE </h5>
+            <span class="details" >Par&nbsp;:&nbsp;#LESAUTEURS</span>
+            <BOUCLE_cote1(MOTS){id_groupe=2}{id_article}{"<br />"}>#LOGO_MOT<br/></BOUCLE_cote1>
+            <B_tags1>Tags : <BOUCLE_tags1(MOTS){id_groupe=4}{id_article}{", "}><a href="#URL_MOT">#TITRE</a></BOUCLE_tags1>
+            [(#TEXTE)]
+        </div>
+    </BOUCLE_Lestrailers>
 	
-	<BOUCLE_LesCritiques(ARTICLES){id_article = #ID_OBJET}{id_rubrique!=51}{id_rubrique!=42}{id_rubrique!=102}>
+	<BOUCLE_LesCritiques(ARTICLES  films_liens){id_film}{id_rubrique!=51}{id_rubrique!=42}{id_rubrique!=102}{doublons}>
 		<div class="critique ">
 			<h5>#TITRE </h5>
-			<span class="details" >Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
+			<span class="details" >Par&nbsp;:&nbsp;#LESAUTEURS</span>
 			<BOUCLE_cote(MOTS){id_groupe=2}{id_article}{"<br />"}>#LOGO_MOT<br/></BOUCLE_cote>
             <B_tags>Tags : <BOUCLE_tags(MOTS){id_groupe=4}{id_article}{", "}><a href="#URL_MOT">#TITRE</a></BOUCLE_tags>
 			[(#TEXTE)]
 		</div>
 	</BOUCLE_LesCritiques>
-</BOUCLE_Lien>
+
 </div>
 
 <B_LesComms>
