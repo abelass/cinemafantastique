@@ -4,8 +4,149 @@
         [(#REM)
         Composer un tableau des acteurs, réalisateurs et scénariste pour un affiche par points
         ]   
+        #SET{personnalites,#ARRAY}       
         
-        #SET{personnalites,#ARRAY}
+ [(#REM)Recherche sur les films]       
+        <B_films>
+<h4>Films([(#GRAND_TOTAL)])</h4>
+[<p class="pagination">(#PAGINATION)</p>]          
+<ul class="liste_recherche">
+<BOUCLE_films(FILMS){title LIKE%#ENV{recherche}%}{pagination 20}{par title}{inverse}>
+    <li class="item">
+           [(#LOGO_FILM|!={''}|?{
+                [(#LOGO_FILM|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
+                ,
+                [(#CHEMIN{IMG/logos_films/#LOGO}|image_reduire{100,*}|inserer_attribut{class,spip_logos}|inserer_attribut{alt,#TITLE})]
+                })]
+           <a href="#URL_FILM">[(#TITLE|supprimer_numero)]</a> 
+           [<div class="date">(#DATE|affdate_court)</div>]
+           [<p>(#SYNOPSIS|JsToDb|couper{150}|propre|couper{150})</p>]
+    </li>
+    
+   [(#REM)Tableau des personnalités liées au films]
+    
+   <BOUCLE_real(REALISATEURS_LIENS realisateurs){id_objet=#ID_FILM}{objet=film}>
+   #SET{logo,''}
+            [(#LOGO_REALISATEUR|!={''}|?{
+                #SET{logo,#LOGO_REALISATEUR|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]        
+         [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                        #ARRAY{realisateur,#ARRAY{
+                                    points,120,
+                                    url,#URL_REALISATEUR,
+                                    logo,#GET{logo},
+                                    }
+                                 }
+                            }                     
+                        }
+                    }
+                }
+              ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                                    realisateur,#ARRAY{
+                                        points,120,
+                                        url,#URL_REALISATEUR,
+                                        logo,#GET{logo},
+                                        }
+                                    }   
+                                
+                            }   
+                     }
+                }
+            ]
+   </BOUCLE_real>
+   
+   <BOUCLE_act(ACTEURS_LIENS acteurs){id_objet=#ID_FILM}{objet=film}>
+   #SET{logo,''}
+            [(#LOGO_ACTEUR|!={''}|?{
+                #SET{logo,#LOGO_ACTEUR|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]
+       [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                            #ARRAY{acteur,#ARRAY{
+                                points,50,
+                                url,#URL_ACTEUR,
+                                logo,#GET{logo},
+                                }
+                             }
+                           }                     
+                        }
+                   }
+                }
+              
+           ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                            acteur,#ARRAY{
+                                points,50,
+                                url,#URL_ACTEUR,
+                                logo,#GET{logo},
+                                }
+                            }
+                        }   
+                    }
+                }
+            ]
+   </BOUCLE_act>
+   
+   <BOUCLE_scen(SCENARISTES_LIENS scenaristes){id_objet=#ID_FILM}{objet=film}>
+         #SET{logo,''}
+            [(#LOGO_SCENARISTE|!={''}|?{
+                #SET{logo,#LOGO_SCENARISTE|extraire_attribut{src}}
+                ,
+                #SET{logo,#LOGO}
+                })]
+       [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                            #ARRAY{scenariste,#ARRAY{
+                                points,10,
+                                url,#URL_SCENARISTE,
+                                logo,#GET{logo},
+                                }
+                             }
+                           }                     
+                        }
+                   }
+                }
+              
+           ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
+            #SET{personnalites,#GET{personnalites}|array_merge{
+                    #ARRAY{
+                        #NOM,#ARRAY{
+                            scenariste,#ARRAY{
+                                points,10,
+                                url,#URL_SCENARISTE,
+                                logo,#GET{logo},
+                                }
+                            }
+                        }   
+                    }
+                }
+            ]
+   </BOUCLE_scen>   
+</BOUCLE_films>
+</ul>
+</B_films>
+        
+        
+
         
         <BOUCLE_RechActeurs(ACTEURS){recherche}{!par points}{0,#ENV{limite_personnalite,10}}>
         #SET{logo,''}
@@ -15,6 +156,23 @@
                 #SET{logo,#LOGO}
                 })]
         
+       [(#GET{personnalites}|table_valeur{#NOM}|oui)
+           #SET{personnalites,#GET{personnalites}|array_merge{
+                #ARRAY{#NOM,
+                        #GET{personnalites}|table_valeur{#NOM}|array_merge{
+                            #ARRAY{acteur,#ARRAY{
+                                points,#POINTS,
+                                url,#URL_ACTEUR,
+                                logo,#GET{logo},
+                                }
+                             }
+                           }                     
+                        }
+                   }
+                }
+              
+           ]
+           [(#GET{personnalites}|table_valeur{#NOM}|non)
             #SET{personnalites,#GET{personnalites}|array_merge{
                     #ARRAY{
                         #NOM,#ARRAY{
@@ -27,6 +185,7 @@
                         }   
                     }
                 }
+            ]
         </BOUCLE_RechActeurs>
         
 
@@ -108,9 +267,29 @@
                 }
             ]
         </BOUCLE_Rechrealisteurs>
+        
+     [(#REM) Calculer les points par personnalités]
      
-    [(#REM) Affichage du résultat des personnalitées]    
-    <INCLURE{fond=include/recherche_personnalitees,personnalites=#GET{personnalites},env,ajax}/>
+     #SET{personnalites_rangees,#ARRAY}
+     <BOUCLE_personnalites(DATA){source tableau,#GET{personnalites}}>
+        #SET{points,#ARRAY}
+        <BOUCLE_personnalites_points(DATA){source tableau,#VALEUR}>
+        #SET{points,#GET{points}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#VALEUR{points}}}}
+        </BOUCLE_personnalites_points>
+
+        #SET{points_total,#GET{points}|array_sum}
+
+       #SET{personnalites_rangees,#GET{personnalites_rangees}|array_merge{
+                #ARRAY{#COMPTEUR_BOUCLE,#ARRAY{
+                        #CLE,#VALEUR,points,#GET{points_total}
+                        }
+                    }
+                }
+            }    
+     </BOUCLE_personnalites> 
+
+    [(#REM) Affichage du résultat des personnalités]    
+    <INCLURE{fond=include/recherche_personnalites,personnalites=#GET{personnalites_rangees},env,ajax}/>
       
       
 [(#REM) recherche sur les articles]      
@@ -120,7 +299,5 @@
     
     [(#REM)Les News]       
     <INCLURE{fond=include/recherche_articles,exclu=42,titre=Autres,env,ajax}/>
-    
-    [(#REM)Les News]       
-    <INCLURE{fond=include/recherche_films,env,ajax}/>
+
     </div>
