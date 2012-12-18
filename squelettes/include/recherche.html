@@ -12,7 +12,7 @@
 [<p class="pagination">(#PAGINATION)</p>]          
 <ul class="liste_recherche">
 <BOUCLE_films(FILMS){title LIKE%#ENV{recherche}%}{pagination 20}{par title}{inverse}>
-    <li class="item">
+    <li class="item[ (#AFFICHAGE_SPECIAL|oui)affichage_special]">
            [(#LOGO_FILM|!={''}|?{
                 [(#LOGO_FILM|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
                 ,

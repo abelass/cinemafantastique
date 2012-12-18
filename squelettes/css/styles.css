@@ -841,3 +841,5 @@ text-transform:uppercase;
 .liste_recherche .details{padding : 0 5px}
 
 .liste_recherche .item{clear:both}
+
+.affichage_special p, .affichage_special td{color:#ffa500}
