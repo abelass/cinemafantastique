@@ -830,7 +830,19 @@ text-transform:uppercase;
 
 .vignette a{color:#FFFFFF; padding:5px; display:block}
 
+.vignette a.visible { 
+color: #000000;
+position: absolute;
+bottom: 0;
+font-weight:bold;
+background:#FFFFFF;
+opacity: 0.5;
+width:80px
+}
+
 .vignette:hover .liens{display:block; position:absolute; width:80px; height: 80px; background:#CC0000}
+
+.vignette:hover .multi{display:none}
 
 .recherche  .more{clear:both}
 
@@ -843,3 +855,4 @@ text-transform:uppercase;
 .liste_recherche .item{clear:both}
 
 .affichage_special p, .affichage_special td{color:#ffa500}
+

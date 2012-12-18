@@ -10,20 +10,21 @@
             <div class="vignette">
                 [(#TOTAL_BOUCLE|>{1}|oui)<div class="liens">]
             <BOUCLE_personnalite(DATA){source tableau,#VALEUR}>
+            [(#VALEUR{logo}|oui)#SET{logo,#VALEUR{logo}}]
             [(#TOTAL_BOUCLE|=={1}|oui)
-                <a href="#VALEUR{url}" title="#GET{nom}">
-                [(#VALEUR{logo}|image_passe_partout{90,90}|image_recadre{50,50}|inserer_attribut{alt,#GET{nom}}|sinon{#GET{nom}})]
-                </a>
+                <a class="visible" href="#VALEUR{url}" title="#GET{nom}">#GET{nom}</a>
+                #SET{nom,''}
                  ]
                [(#TOTAL_BOUCLE|>{1}|oui)
-               [(#VALEUR{logo}|oui)#SET{logo,#VALEUR{logo}}]
                 <a href="#VALEUR{url}" title="#GET{nom}-[(#VAL{#CLE:titre_#CLE}|_T)]">[(#VAL{#CLE:titre_#CLE}|_T)]</a>
                  ]   
             
             </BOUCLE_personnalite>
-            [(#TOTAL_BOUCLE|>{1}|oui)</div>
-            [(#GET{logo}|image_passe_partout{90,90}|image_recadre{90,90}|inserer_attribut{alt,#GET{nom}}|sinon{<span>#GET{nom}</span>})]
-            ]
+            [(#TOTAL_BOUCLE|>{1}|oui)
+            </div>
+            <a class="visible multi" href="#VALEUR{url}" title="#GET{nom}">#GET{nom}</a>]
+            [(#GET{logo}|image_passe_partout{90,90}|image_recadre{90,90}|inserer_attribut{alt,#GET{nom}})]
+
                       
             </div>
         </B_personnalite>
