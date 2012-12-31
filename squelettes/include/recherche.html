@@ -6,12 +6,14 @@
         ]   
         #SET{personnalites,#ARRAY}       
         
- [(#REM)Recherche sur les films]       
+ [(#REM)Recherche sur les films]    
         <B_films>
 <h4>Films([(#GRAND_TOTAL)])</h4>
-[<p class="pagination">(#PAGINATION)</p>]          
+[<p class="pagination">(#PAGINATION)</p>]  
+        
 <ul class="liste_recherche unstyled">
-<BOUCLE_films(FILMS){title LIKE%#ENV{recherche}%}{pagination 20}{par title}{inverse}>
+    
+<BOUCLE_films(FILMS){title LIKE %(#ENV{recherche}|replace{L&#039;,"'"})%}{pagination 20}{par title}{inverse}>
     <li class="item[ (#AFFICHAGE_SPECIAL|oui)affichage_special]">
            [(#LOGO_FILM|!={''}|?{
                 [(#LOGO_FILM|image_reduire{100,*}|inserer_attribut{alt,#TITLE})]
