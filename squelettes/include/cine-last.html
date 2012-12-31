@@ -6,7 +6,7 @@
         <dl class="jaquette #GET{interval}">
         <dt><a href="#URL_FILM" >
             [(#LOGO_FILM|!={''}|?{
-                [(#LOGO_FILM|image_reduire{120,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
+                [(#LOGO_FILM|image_reduire{90,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
                 ,
                 [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet3" alt="affiche du film" />]  
                 })]
