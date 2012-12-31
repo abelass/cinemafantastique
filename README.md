@@ -1,2 +1,0 @@
-cinemalist_squelettes
-=====================
