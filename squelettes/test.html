@@ -1,0 +1,52 @@
+<BOUCLE_accueil(RUBRIQUES){id_rubrique=1}>
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="fr"> <!--<![endif]-->
+<head>
+	<title>#NOM_SITE_SPIP</title>
+	<script type="text/javascript" src="[(#CHEMIN{js/modernizr-2.6.2.min.js})]"></script>
+	<link rel="stylesheet" href="[(#CHEMIN{css/styles.css})]" type="text/css" media="screen" />
+	<link rel="stylesheet" href="[(#CHEMIN{css/flexslider.css})]" type="text/css" media="screen" />
+</head>
+<body>
+<div id="principal" class="container">
+	<div id="contenu" class="col1">    
+	<div class="flexslider">
+		  <ul class="slides">
+		    <BOUCLE_focus(ARTICLES){id_mot=84}{par date}{inverse}{0,7}>
+		    <li data-thumb="[(#LOGO_ARTICLE|image_reduire{80}|extraire_attribut{src})]">
+		      <a href="#URL_ARTICLE" class="figure">
+		    			[<img src="(#LOGO_ARTICLE|extraire_attribut{src})" alt="" />]
+			    		<div class="caption">
+				    		[<h3>(#TITRE|supprimer_numero)</h3>]
+				    		[(#CHAPO)]
+			    		</div>
+		      </a>
+		    </li>
+		    </BOUCLE_focus>
+		  </ul>
+		</div>
+		</div>
+		
+		<!-- jQuery -->
+		<script src="[(#CHEMIN{js/jquery.js})]"></script>
+		<script>window.jQuery || document.write('<script src="[(#CHEMIN{js/jquery.js})]">\x3C/script>')</script>
+		<!-- FlexSlider -->
+		<script defer src="[(#CHEMIN{js/jquery.flexslider-min.js})]"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+		  $('.flexslider').flexslider({
+		    animation: "slide",
+		    controlNav: "thumbnails"
+		  });
+		});
+		</script>
+		
+</div>
+</body>
+</html>
+</BOUCLE_accueil>

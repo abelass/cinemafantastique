@@ -1,0 +1,26 @@
+<h4>R&eacute;centes critiques</h4>
+<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{par date}{inverse}{0,6}>
+		#SET{interval,#COMPTEUR_BOUCLE|alterner{'','right'}}
+    <BOUCLE_lien(FILMS_LIENS){id_objet=#ID_ARTICLE}{objet=article}>
+        <BOUCLE_NomFilm(FILMS){id_film}>
+        <dl class="jaquette #GET{interval}">
+        <dt><a href="#URL_FILM" >
+            [(#LOGO_FILM|!={''}|?{
+                [(#LOGO_FILM|image_reduire{120,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
+                ,
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet3" alt="affiche du film" />]  
+                })]
+                </a>
+            </dt>  
+        <dd>
+            [<strong>(#TITLE|textebrut)</strong>]<br />
+            [(#ANNEE|textebrut)]
+        </dd>
+        </dl>
+        </BOUCLE_NomFilm>
+    </BOUCLE_lien>
+</BOUCLE_articles>
+
+
+
+

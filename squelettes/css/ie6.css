@@ -1,0 +1,33 @@
+/* 
+++++ CINEMA FANTASTIQUE ++++
+ styles par EXIBIT
+ www.exibit.be
+ HACK IE6
+*/
+#principal{
+	width:984px;
+}
+#contenu{
+	margin:0 0 0 0;
+}
+.actu{
+	background:none;
+}
+#contenu .box1 .actu{
+	height:50px;
+}
+UL LI{
+	padding-left:25px;
+	background:none;
+	list-style-image:url('../images/ico_main.gif');
+	line-height:1.4em;
+}
+.box1 UL{
+	padding-left:20px;
+}
+.box1 UL LI{
+	padding-left:8px;
+}
+.box1 UL.nuage{
+	padding-left:0;
+}

@@ -1,0 +1,39 @@
+<BOUCLE_env(ARTICLES){id_article}>
+<body>
+<div id="principal" class="container">
+    [(#INCLURE{fond=include/header}{id_rubrique})]
+    
+    [(#INCLURE{fond=include/menu}{id_rubrique})]
+   
+   	<div id="contenu" class="col1">
+		[(#INCLURE{fond=include/path}{id_rubrique})]
+		
+		<BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
+    <div class="article">   
+        [<h4>(#TITRE|supprimer_numero)</h4>]
+        [<div class="chapeau">(#CHAPO)</div>]
+        [(#TEXTE)]
+        
+        <BOUCLE_listdoc(DOCUMENTS){id_article}{tout}><a href="[(#FICHIER|image_reduire{600}|extraire_attribut{'src'})]" data-fancybox-group="gallery" class="fancybox">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+        </BOUCLE_listdoc>
+        <div style="clear: both;"> </div>
+        [<div class="ps">(#PS)</div>]
+        <link rel="stylesheet" href="[(#CHEMIN{css/jquery.fancybox.css})]" type="text/css" media="screen" />
+        <script src="[(#CHEMIN{js/jquery.fancybox.js})]"></script>
+        <script type="text/javascript">
+	        $(document).ready(function() {
+		        	$('.fancybox').fancybox();
+		      });
+        </script>
+    </div>
+	</div>
+
+	[(#INCLURE{fond=include/colonne2}{id_rubrique})]
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+
+</div>
+
+[(#INCLURE{fond=include/pied}{id_rubrique})]
+
+</body>
+</BOUCLE_env>

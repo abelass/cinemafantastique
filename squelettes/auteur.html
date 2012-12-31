@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+[(#INCLURE{fond=include/head})]
+</head>
+<body>
+
+<div id="principal">
+	[(#INCLURE{fond=include/header}{id_rubrique})]
+
+	[(#INCLURE{fond=include/menu}{id_rubrique})]
+
+    <div id="contenu" class="col1">
+        <h3>Le staff au complet</h3>
+        <BOUCLE_aut(AUTEURS){par nom}{id_auteur!=1}{doublons}>
+        <div class="box1">
+        [<h4>(#NOM|supprimer_numero)</h4>]
+        [(#LOGO_AUTEUR_SURVOL||image_reduire{200}|inserer_attribut{"class","onglet1"})]
+        [<h5>(#PGP)</h5>]
+        [<p>(#BIO)</p>]
+        <dl style="clear:left">
+        <dt class="toggler"><a href="javascript:;">Voir ses derni&egrave;res critiques</a></dt>
+        <dd class="accordion">
+        <BOUCLE_articles(ARTICLES) {id_auteur}{par date}{inverse}{0,20}>
+            <BOUCLE_RecupFilm(FILMS_LIENS){id_objet = #ID_ARTICLE}{objet=article}>
+            <BOUCLE_NomFilm(FILMS){id_film = #ID_FILM}>
+                [<img src="[(#CHEMIN{assets/ico_main.gif})]" alt="" /> <a href="spip.php?page=critiques&id_film=#ID_FILM">(#TITLE)</a><br />]
+            </BOUCLE_NomFilm>
+            </BOUCLE_RecupFilm>
+        </BOUCLE_articles>
+        </dd>
+        </dl>
+        </div>
+        </BOUCLE_aut>
+        <script type="text/javascript">
+            var stretchers = $$('dd.accordion');
+            var togglers = $$('dt.toggler');
+            new Accordion(togglers,stretchers, {show:0, alwaysHide: true});
+        </script>
+        
+    </div>
+	<div id="colonne2" class="col2">
+    	<div class="box1">
+        <h4>Parrains &amp; marraines</h4>
+        <BOUCLE_aut2(AUTEURS){id_auteur=15}{tout}>
+        [<h5>(#NOM|supprimer_numero)</h5>]
+        [(#LOGO_AUTEUR_SURVOL||image_reduire{200}|inserer_attribut{"class","onglet1"})]
+        [<h6>(#PGP)</h6>]
+        [<p>(#BIO)</p>]
+        </BOUCLE_aut2>
+        <hr />
+        <BOUCLE_aut3(AUTEURS){id_auteur=16}{tout}>
+        [<h5>(#NOM|supprimer_numero)</h5>]
+        [(#LOGO_AUTEUR_SURVOL||image_reduire{200}|inserer_attribut{"class","onglet1"})]
+        [<h6>(#PGP)</h6>]
+        [<p>(#BIO)</p>]
+        </BOUCLE_aut3>
+        <hr />
+        <BOUCLE_aut4(AUTEURS){id_auteur=17}{tout}>
+        [<h5>(#NOM|supprimer_numero)</h5>]
+        [(#LOGO_AUTEUR_SURVOL||image_reduire{200}|inserer_attribut{"class","onglet1"})]
+        [<h6>(#PGP)</h6>]
+        [<p>(#BIO)</p>]
+        </BOUCLE_aut4>
+        </div>
+    </div>
+
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+	
+	<div class="clear"></div>
+</div>
+
+[(#INCLURE{fond=include/pied})]
+
+</body>
+</html>

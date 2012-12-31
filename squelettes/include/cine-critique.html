@@ -1,0 +1,112 @@
+<h3>Critique de film</h3>
+<BOUCLE_RecupFilm(FILMS){id_film}{par title}> 
+	<div class="box1 film">
+	<!-- PriceMinister -->
+	[<a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12322004&url=http://www.priceminister.com/nav/Video/kw/(#TITLE|replace{' ', '+'})" target="_blank" style="display:block;position:absolute;right:20px;top:10px;z-index:1000">
+<img src="http://track.effiliation.com/servlet/effi.show?id_compteur=12329514" alt="pub" border="0" />
+</a>]
+	[<h4>(#TITLE|textebrut)</h4>]
+	[<h5>"(#TITLE_VO|textebrut)"</h5>]
+
+		  [(#LOGO_FILM|!={''}|?{
+		          <a href="[(#LOGO_FILM|extraire_attribut{src})]" >
+                [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet1}|inserer_attribut{alt,affiche du film})]
+                ,
+                <a href="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" >
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet1" alt="affiche du film" />]  
+                })]    
+                </a>
+	<ul>
+	    [<li><strong>Ann&eacute;e de production : </strong>(#ANNEE|textebrut)</li>]
+	    
+	    <B_LesRealisateursDuFilm>
+	    <li><strong>R&eacute;alisateurs : </strong>
+            <BOUCLE_LesRealisateursDuFilm(REALISATEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeRealisateurs(REALISATEURS){id_realisateur = #ID_REALISATEUR}><a href="#URL_REALISATEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeRealisateurs></BOUCLE_LesRealisateursDuFilm>
+        </li>
+        </B_LesRealisateursDuFilm>
+            [<li><strong>R&eacute;alisateur : </strong>(#REALISATEUR|textebrut)</li>]
+        <//B_LesRealisateursDuFilm>
+        
+        <B_LesScenaristesDuFilm>
+        <li><strong>Sc&eacute;naristes : </strong>
+            <BOUCLE_LesScenaristesDuFilm(SCENARISTES_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LeScenariste(SCENARISTES){id_scenariste = #ID_SCENARISTE}><a href="#URL_SCENARISTE">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LeScenariste></BOUCLE_LesScenaristesDuFilm>
+        </li>
+        </B_LesScenaristesDuFilm>
+            [<li><strong>Sc&eacute;nariste : </strong>(#SCENARISTE|textebrut)</li>]
+        <//B_LesScenaristesDuFilm>
+        
+        <B_LesacteursDuFilm>
+        <li><strong>Acteurs : </strong>
+            <BOUCLE_LesacteursDuFilm(ACTEURS_LIENS){id_objet=#ID_FILM}{objet=film}{", "}><BOUCLE_LesActeurs(ACTEURS){id_acteur = #ID_ACTEUR}><a href="#URL_ACTEUR">[(#PRENOM)&nbsp;]#NOM</a></BOUCLE_LesActeurs></BOUCLE_LesacteursDuFilm>
+        </li>
+        </B_LesacteursDuFilm>
+            [<li><strong>Casting : </strong>(#CASTING|textebrut)</li>]
+        <//B_LesacteursDuFilm>
+	    
+	    [<li><strong>Musique : </strong>(#MUSIQUE|textebrut)</li>]
+		[<li><strong>Genre : </strong>(#GENRE|textebrut)</li>]
+	    [<li><strong>Pays d'origine : </strong>(#PAYS|textebrut)</li>]
+		[<li><strong>Dur&eacute;e : </strong>(#DUREE|textebrut)</li>]
+		[<li><strong>Budget : </strong>(#BUDGET|textebrut)</li>]
+		[<li><strong>Meilleures sc&egrave;nes : </strong>(#SCENES|textebrut)</li>]
+		[<li><strong><a href="<?php echo "(#ANNONCE|textebrut)"; ?>" target="_blank">Bande annonce</a></strong></li>]
+        [<li><strong><a href="(#SORTIE|textebrut)" target="_blank">Programmation Cinebel</a></strong></li>]
+		[<li><strong>R&eacute;compenses : </strong><span class="headline">(#RECOMPENSES)</span></li>]
+	</ul>
+	
+
+	<p><em>[(#SYNOPSIS|JsToDb)]</em></p>
+	<!-- PriceMinister -->
+	[<p style="text-align:center"><a href="http://track.effiliation.com/servlet/effi.redir?id_compteur=12322004&url=http://www.priceminister.com/nav/Video/kw/(#TITLE|replace{' ', '+'})" target="_blank"><img src="http://track.effiliation.com/servlet/effi.show?id_compteur=12329515" alt="pub" border="0" /></a></p>]
+	
+  	<B_Lestrailers><hr /><BOUCLE_Lestrailers(ARTICLES films_liens){id_film}{id_rubrique=118}{doublons}{!par date}>
+    <div class="critique ">
+        <h5>#TITRE </h5>
+        <span class="details" >Par&nbsp;:&nbsp;#LESAUTEURS</span>
+        <BOUCLE_cote1(MOTS){id_groupe=2}{id_article}{"<br />"}>#LOGO_MOT<br/></BOUCLE_cote1>
+        <B_tags1>Tags : <BOUCLE_tags1(MOTS){id_groupe=4}{id_article}{", "}><a href="#URL_MOT">#TITRE</a></BOUCLE_tags1>
+        [(#TEXTE)]
+    </div>
+    </BOUCLE_Lestrailers>
+	</div>
+</BOUCLE_RecupFilm>
+
+<div class="ban">
+<INCLURE{fond=include/ban-pave}>
+</div>
+        
+<div class="critique">
+<h4>Les critiques &agrave; propos de ce film</h4>
+	
+	<BOUCLE_LesCritiques(ARTICLES  films_liens){id_film}{id_rubrique!=51}{id_rubrique!=42}{id_rubrique!=102}{doublons}>
+		<div class="critique">
+			<h5>#TITRE </h5>
+			<span class="details" >Par&nbsp;:&nbsp;#LESAUTEURS</span>
+			<BOUCLE_cote(MOTS){id_groupe=2}{id_article}{"<br />"}>#LOGO_MOT<br/></BOUCLE_cote>
+            <B_tags>Tags : <BOUCLE_tags(MOTS){id_groupe=4}{id_article}{", "}><a href="#URL_MOT">#TITRE</a></BOUCLE_tags>
+			[(#TEXTE)]
+		</div>
+	</BOUCLE_LesCritiques>
+
+</div>
+
+<B_LesComms>
+<div class="film box1">
+<h4>Commentaires sur le film</h4>
+<BOUCLE_LesComms(COMMENTAIRES_FILM){id_film = #ENV{id_film}}{par date}{statut = publie}>
+<div class="comment">
+	[<strong>(#TITRE)</strong><br />]
+	[(#ETOILES|=={0}|?{' ',''})<p><img src='squelettes/images/etoiles-0.png' alt='0 etoiles' /></p>]
+	[(#ETOILES|=={1}|?{' ',''})<p><img src='squelettes/images/etoiles-1.png' alt='1 etoiles' /></p>]
+	[(#ETOILES|=={2}|?{' ',''})<p><img src='squelettes/images/etoiles-2.png' alt='2 etoiles' /></p>]
+	[(#ETOILES|=={3}|?{' ',''})<p><img src='squelettes/images/etoiles-3.png' alt='3 etoiles' /></p>]
+	[(#ETOILES|=={4}|?{' ',''})<p><img src='squelettes/images/etoiles-4.png' alt='4 etoiles' /></p>]
+	[(#ETOILES|=={5}|?{' ',''})<p><img src='squelettes/images/etoiles-5.png' alt='5 etoiles' /></p>]
+	[(#COEUR|?{' ',''})<img src="#CHEMIN{/img_pack/emblem-favorite.png}" alt="coups de coeur" style="float: left;" /><:cinemalist:coups_de_coeur:><br /> <br />]
+			[(#DAUBE|?{' ',''})<img src="#CHEMIN{/img_pack/dialog-error.png}" alt="daube"/> <:cinemalist:daube:><br /><br />]
+	[(#TEXTE)]
+	<div class="more">[(#DATE|affdate)]&nbsp;&agrave;&nbsp;[(#DATE|affdate{'H:m'})][&nbsp;| Par (#NOM)]</div>
+</div>
+</BOUCLE_LesComms>
+</div>
+</B_LesComms>

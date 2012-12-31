@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+[(#INCLURE{fond=include/head})]
+</head>
+<body>
+
+<div id="principal" class="container">
+	[(#INCLURE{fond=include/header})]
+
+	[(#INCLURE{fond=include/menu})]
+
+    [(#REM) La recherche]
+    [(#INCLURE{fond=include/recherche,env,ajax})]
+
+	[(#INCLURE{fond=include/colonne2}{id_rubrique})]
+	
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+	
+</div>
+[(#INCLURE{fond=include/pied})]
+</body>
+</html>

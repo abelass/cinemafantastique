@@ -1,0 +1,11 @@
+<BOUCLE_art(ARTICLES){id_mot=17}{par date}{inverse}>
+<div class="event">
+<h4>#TITRE</h4>
+<BOUCLE_listdoc(DOCUMENTS){id_article}>[(#FICHIER|image_masque{masque.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</BOUCLE_listdoc>
+<br style="clear:both;">
+</B_listdoc>
+[<div class="chapeau">(#CHAPO|liens_ouvrants)</div>]
+<span class="details">[(#DATE|affdate)] | <a href="#URL_ARTICLE">lire plus</a></span>
+</div>
+</BOUCLE_art>
+

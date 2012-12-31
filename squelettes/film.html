@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<INCLURE{fond=include/head-film}{id_film}>
+</head>
+<body style="padding-top: 280px;background: black no-repeat  50% 0px  url(http://pubs.ecranfantastique.net/www/delivery/avw.php?zoneid=342&amp;cb=<?php echo $i; ?>&amp;n=abd9dacb);">
+<div id="adClickMe" onclick="javascript:window.open('http://pubs.ecranfantastique.net/www/delivery/ck.php?zoneid=342&n=abd9dacb&amp;cb=<?php echo $i; ?>');">
+</div>
+<div id="principal" class="container">
+    [(#INCLURE{fond=include/header}{id_rubrique=2})]
+	
+    [(#INCLURE{fond=include/menu}{id_rubrique=2})]
+    <div id="contenu" class="col1">
+        [(#INCLURE{fond=include/cine-critique}{id_film})]
+
+        <div class="comment box1">
+        #FORMULAIRE_COMMENTAIRE_FILM{#ENV{id_film}}
+        </div>
+    </div>
+    <div id="colonne2" class="col2">
+         <!-- galerie photos -->     
+        <BOUCLE_Lien3(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
+        <B_galerie>
+            <div class="box1">
+            <h4>Galerie photos</h4>
+        <BOUCLE_galerie(ARTICLES){id_article = #ID_OBJET}{id_rubrique=102}>
+            <BOUCLE_listdoc(DOCUMENTS){id_article}{0,9}{tout}><a href="[(#FICHIER|image_reduire{600}|extraire_attribut{'src'})]" data-fancybox-group="gallery" class="fancybox">[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</a>
+            </BOUCLE_listdoc>
+            <div style="clear: both;"> </div>
+            <div >
+            <span class="more"><a href="#URL_ARTICLE">Voir la galerie compl&egrave;te</a></span>
+            </div>
+        </BOUCLE_galerie>
+            </div>
+        </B_galerie>
+        <script type="text/javascript">
+	        $(document).ready(function() {
+		        	$('.fancybox').fancybox();
+		      });
+        </script>
+        <!-- le trailer -->     
+        <B_trailer>
+            <div class="box1">
+            <h4>Trailer</h4>
+        <BOUCLE_trailer(ARTICLES){id_article = #ID_OBJET}{id_rubrique=118}{0,0}>
+            <div style="width:50px;">
+            
+            <span class="more"><a href="#URL_ARTICLE">Voir le trailer</a></span>
+            </div>
+        </BOUCLE_trailer>
+            </div>
+        </B_trailer>
+        
+        </BOUCLE_Lien3>
+    	  
+    	  <!-- news -->
+    	  <B_test>
+    	  <div class="box1">
+        <h4>News associées [((#COMPTEUR_BOUCLE))]</h4>
+        <dl>
+    	  <BOUCLE_test(ARTICLES films_liens){id_film}{id_rubrique=42}{par date}{inverse}>
+    	  <BOUCLE_premierdumois(ARTICLES films_liens){id_film}{id_article}{doublons}>
+	    	  <dt class="accordionButton"><a href="javascript:;">[(#DATE|nom_mois)] [(#DATE|annee)]</a></dt>
+					<dd class="accordionContent">
+					   <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+					   <hr />
+					</BOUCLE_premierdumois>
+					<BOUCLE_MOIS(ARTICLES films_liens){id_film}{mois_relatif=0}{doublons}{par date}{inverse}{'<hr />'}>
+					   <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+					</BOUCLE_MOIS>
+					</dd>
+    	  </BOUCLE_test>
+    	  </dl>
+        </div>
+        <script defer src="[(#CHEMIN{js/accordion.js})]"></script>
+    	  </B_test>
+    	  
+        
+        <!-- interview -->
+        <BOUCLE_Lien(FILMS_LIENS){id_film = #ENV{id_film}}{objet=article}>
+        <B_LesCritiques>
+        <div class="box1">
+        <h4>Interviews li&eacute;es</h4>
+        <ul>
+				<BOUCLE_LesCritiques(ARTICLES){id_article = #ID_OBJET}{id_rubrique=51}>
+					<li><a href="#URL_ARTICLE">#TITRE</a></li>
+				</BOUCLE_LesCritiques>
+		        </ul>
+		        </div>
+		        </B_LesCritiques>
+				</BOUCLE_Lien>
+
+        <!--alphabet-->
+        <div class="box1">
+	      <BOUCLE_alpha(ARTICLES){id_article=223}>
+        <h4>Database</h4>
+        [(#TEXTE)]
+        </BOUCLE_alpha>
+        </div>
+        
+        <!--critiques-->
+    		<div class="box1">
+        [(#INCLURE{fond=include/cine-last-col}{env})]
+        </div>
+        
+         <div class="ban">
+        	[(#INCLURE{fond=include/ban-sky1})]
+        	[(#INCLURE{fond=include/ban-sky2})]
+         </div>
+    </div>
+	[(#INCLURE{fond=include/colonne3}{id_rubrique=2})]
+
+</div>
+
+[(#INCLURE{fond=include/pied}{id_rubrique=2})]
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+<BOUCLE_art(ARTICLES){id_rubrique}{par num titre}>
+<div class="box1">
+[<h4>(#TITRE|supprimer_numero)</h4>]
+[<div class="chapeau">(#CHAPO)</div>]
+[(#TEXTE)]
+[<div class="ps">(#PS)</div>]
+<div class="clear"> </div>
+</div>
+</BOUCLE_art>
+</B_art>
+<BOUCLE_env(RUBRIQUES){id_rubrique}>
+<B_sous><ul>
+	<BOUCLE_sous(RUBRIQUES){id_parent}><li><a href="#URL_RUBRIQUE">#TITRE</a></li></BOUCLE_sous>
+</ul></B_sous>
+</BOUCLE_env>
+<//B_art>
+

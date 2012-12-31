@@ -1,0 +1,45 @@
+<div id="colonne2" class="col2">
+		<!-- Image du jour -->
+		<div class="box1">
+		<h4>Image du jour</h4>
+    <div class="flexslider" id="imagedujour">
+      
+		  <ul class="slides">
+		    <BOUCLE_day(ARTICLES){id_rubrique=109}{par date}{inverse}{0,5}>
+		    <li data-thumb="[(#LOGO_ARTICLE|image_reduire{80}|extraire_attribut{src})]">
+		      <a href="#URL_ARTICLE" class="figure">
+		    			[<img src="(#LOGO_ARTICLE|image_masque{masque3.png}|image_gamma{-25}|extraire_attribut{src})" alt="" />]
+			    		<div class="caption">
+				    		[<h3>(#TITRE|supprimer_numero)</h3>]
+				    		[(#CHAPO)]
+			    		</div>
+		      </a>
+		    </li>
+		    </BOUCLE_day>
+		  </ul>
+		</div>
+		<script defer src="[(#CHEMIN{js/jquery.flexslider-min.js})]"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+		  $('#focus').flexslider({
+		    animation: "slide",
+		    controlNav: "thumbnails"
+		  });
+		  $('#imagedujour').flexslider({
+		    animation: "slide",
+		    controlNav: false
+		  });
+		});
+		</script>
+		</div>	
+
+    <div class="ban">
+        [(#INCLURE{fond=include/ban-sky1})]
+        [(#INCLURE{fond=include/ban-sky2})]
+    </div>
+    
+    <!--critiques-->
+		<div class="box1">
+    [(#INCLURE{fond=include/cine-last})]
+    </div>
+</div>

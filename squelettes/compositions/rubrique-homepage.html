@@ -1,0 +1,104 @@
+<?php 
+$i=rand(1,8000);
+?>
+<body style="padding-top: 280px;background: black no-repeat  50% 0px  url(http://pubs.ecranfantastique.net/www/delivery/avw.php?zoneid=342&amp;cb=<?php echo $i; ?>&amp;n=abd9dacb);">
+
+<div id="adClickMe" onclick="javascript:window.open('http://pubs.ecranfantastique.net/www/delivery/ck.php?zoneid=342&n=abd9dacb&amp;cb=<?php echo $i; ?>');">
+</div>
+
+<div id="principal" class="container">
+	[(#INCLURE{fond=include/header}{id_rubrique})]
+	
+  [(#INCLURE{fond=include/menu}{id_rubrique})]
+	<div id="contenu" class="col1">
+    <!--focus-->
+    <div class="flexslider" id="focus">
+		  <ul class="slides">
+		    <BOUCLE_focus(ARTICLES){id_mot=84}{par date}{inverse}{0,7}>
+		    <li data-thumb="[(#LOGO_ARTICLE|image_reduire{80}|extraire_attribut{src})]">
+		      <a href="#URL_ARTICLE" class="figure">
+		    			[<img src="(#LOGO_ARTICLE|extraire_attribut{src})" alt="" />]
+			    		<div class="caption">
+				    		[<h3>(#TITRE|supprimer_numero)</h3>]
+				    		[(#CHAPO)]
+			    		</div>
+		      </a>
+		    </li>
+		    </BOUCLE_focus>
+		  </ul>
+		</div>
+		
+		  
+    
+    <div class="ban">
+    [(#INCLURE{fond=include/ban-pave})]
+    </div>
+        
+    <!--news-->
+		<div class="box1">
+    [(#INCLURE{fond=include/news})]
+    </div>
+    
+    <!-- Banner -->
+    <div class="ban">
+    [(#INCLURE{fond=include/ban-iab})]
+    </div>
+        
+  </div>
+	
+	<div id="colonne2" class="col2">
+		
+		<!-- Image du jour -->
+		<div class="box1">
+		<h4>Image du jour</h4>
+    <div class="flexslider" id="imagedujour">
+      
+		  <ul class="slides">
+		    <BOUCLE_day(ARTICLES){id_rubrique=109}{par date}{inverse}{0,5}>
+		    <li data-thumb="[(#LOGO_ARTICLE|image_reduire{80}|extraire_attribut{src})]">
+		      <a href="#URL_ARTICLE" class="figure">
+		    			[<img src="(#LOGO_ARTICLE|image_masque{masque3.png}|image_gamma{-25}|extraire_attribut{src})" alt="" />]
+			    		<div class="caption">
+				    		[<h3>(#TITRE|supprimer_numero)</h3>]
+				    		[(#CHAPO)]
+			    		</div>
+		      </a>
+		    </li>
+		    </BOUCLE_day>
+		  </ul>
+		</div>
+		<script defer src="[(#CHEMIN{js/jquery.flexslider-min.js})]"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+		  $('#focus').flexslider({
+		    animation: "slide",
+		    controlNav: "thumbnails"
+		  });
+		  $('#imagedujour').flexslider({
+		    animation: "slide",
+		    controlNav: false
+		  });
+		});
+		</script>
+		</div>	
+    
+    <!--critiques-->
+		<div class="box1">
+    [(#INCLURE{fond=include/cine-last})]
+    </div>
+    
+    <div class="ban">
+        <INCLURE{fond=include/ban-sky1}>
+        <INCLURE{fond=include/ban-sky2}>
+    </div>
+    
+    
+  </div>
+	
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+	
+	</div>
+
+[(#INCLURE{fond=include/pied}{id_rubrique})]
+
+</body>

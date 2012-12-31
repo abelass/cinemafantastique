@@ -1,0 +1,63 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>
+<body style="padding-top: 280px;background: black no-repeat  50% 0px  url(http://pubs.ecranfantastique.net/www/delivery/avw.php?zoneid=342&amp;cb=<?php echo $i; ?>&amp;n=abd9dacb);">
+<div id="adClickMe" onclick="javascript:window.open('http://pubs.ecranfantastique.net/www/delivery/ck.php?zoneid=342&n=abd9dacb&amp;cb=<?php echo $i; ?>');">
+</div>
+<div id="principal" class="container">
+	[(#INCLURE{fond=include/header}{id_rubrique})]
+
+	[(#INCLURE{fond=include/menu}{id_rubrique})]
+
+    <div id="contenu" class="col1">
+        [(#INCLURE{fond=include/path}{id_rubrique})]
+    
+    
+      <BOUCLE_ssrub(RUBRIQUES){id_parent}>
+    	<div class="box1">
+      <h4><a href="#URL_RUBRIQUE">#TITRE</a></h4>
+      <BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,5}{doublons}>
+      <div class="actu">
+				<B_listdoc><a href="#URL_ARTICLE"><BOUCLE_listdoc(DOCUMENTS){id_article}{0,1}>[(#FICHIER|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})] </BOUCLE_listdoc></a></B_listdoc>
+			    <h5><a href="#URL_ARTICLE">[(#DATE|affdate)] - [(#TITRE|couper{83})]</a></h5>
+			    [<p>(#INTRODUCTION|couper{120})</p>]  
+			    <div class="clear"> </div>
+			</div>
+      </BOUCLE_art1>
+      </div>
+      </BOUCLE_ssrub>           
+    </div>
+	
+	<div id="colonne2" class="col2">
+      <div class="box1">
+    	
+    		<BOUCLE_ssrubr(RUBRIQUES){id_parent}>
+    		<h4>Archives #TITRE</h4>
+        <dl>
+        <B_articlem>
+        <BOUCLE_articlem(ARTICLES){id_rubrique}{par date}{inverse}{pagination 300}>
+        <BOUCLE_premierdumois(ARTICLES){id_article}{doublons}>
+        <dt class="accordionButton"><a href="javascript:;">[(#DATE|nom_mois)] [(#DATE|annee)]</a></dt>
+        <dd class="accordionContent">
+            <BOUCLE_listeArt(ARTICLES){id_article}{"<hr />"}>
+            <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+            </BOUCLE_listeArt>
+            <hr />
+            <BOUCLE_MOIS(ARTICLES){id_rubrique}{mois_relatif=0}{doublons}{par date}{inverse}{"<hr />"}>
+            <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/[(#DATE|annee)]</small>
+            </BOUCLE_MOIS>
+        </dd>
+        </BOUCLE_premierdumois>
+        </BOUCLE_articlem>
+        #PAGINATION
+        </B_articlem>
+        </dl> 
+        </BOUCLE_ssrubr>
+        <script defer src="[(#CHEMIN{js/accordion.js})]"></script>
+      </div>
+    </div>
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+	
+</div>
+[(#INCLURE{fond=include/pied})]
+
+</body>
+</BOUCLE_rub>

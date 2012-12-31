@@ -1,0 +1,30 @@
+<body>
+<div id="principal" class="container">
+	[(#INCLURE{fond=include/header}{id_rubrique})]
+	
+  [(#INCLURE{fond=include/menu}{id_rubrique})]
+
+    <div id="contenu" class="col1">
+        [(#INCLURE{fond=include/path}{id_rubrique})]
+        
+        <BOUCLE_titre(RUBRIQUES){id_rubrique}>
+        [<h3>(#TITRE|supprimer_numero)</h3>]
+        [<strong>(#DESCRIPTIF)</strong>]
+        [(#TEXTE)]
+        </BOUCLE_titre>
+        
+        <B_sites><ul>
+        <BOUCLE_sites(SITES){id_rubrique}{par nom_site}>
+        <li>[<a href="#URL_SITE">(#LOGO_SITE)</a>] <a href="#URL_SITE">#NOM_SITE</a></li>
+        </BOUCLE_sites>
+        </ul></B_sites>
+    </div>
+	
+	[(#INCLURE{fond=include/colonne2}{id_rubrique})]
+	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+	
+</div>
+
+[(#INCLURE{fond=include/pied}{id_rubrique})]
+
+</body>

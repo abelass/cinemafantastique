@@ -1,0 +1,27 @@
+<div id="colonne3" class="col3">
+		<!-- Cinemag -->
+    <BOUCLE_cinemag(ARTICLES){id_article=1114}>
+    <div class="box1">
+    	<h4>Cinemag</h4>
+    	#TEXTE
+    </div>
+    </BOUCLE_cinemag>
+
+    <!-- Chroniques -->
+    <div class="box1">
+    	<BOUCLE_chroniques(RUBRIQUES){id_rubrique=85}>
+    	[<h4>(#TITRE|supprimer_numero)</h4>]
+        <BOUCLE_art(ARTICLES){id_rubrique IN 190,191,192,193,142}{par date}{inverse}{0,5}>
+        <div class="chronique">
+            [<a href="#URL_ARTICLE">(#LOGO_ARTICLE|inserer_attribut{"class","onglet1"}|image_reduire{70})</a>]
+            <h5><a href="#URL_ARTICLE">#TITRE</a></h5>
+        </div>
+        </BOUCLE_art>
+        </BOUCLE_chroniques>
+        Pas de chronique actuellement
+        <//B_chroniques>
+    	 
+    	<BOUCLE_voir(RUBRIQUES){id_rubrique=85}><span class="more"><a href="#URL_RUBRIQUE">Voir toutes les chroniques</a></span></BOUCLE_voir>
+    </div>
+
+</div>
