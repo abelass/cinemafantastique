@@ -8,3 +8,4 @@ config.php
 dump
 local
 tmp
+config/connect.php
