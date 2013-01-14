@@ -3,23 +3,21 @@
 
 <div id="principal" class="container">
 	[(#INCLURE{fond=include/header}{id_rubrique})]
-
-	[(#INCLURE{fond=include/menu}{id_rubrique})]
+    
+  [(#INCLURE{fond=include/menu}{id_rubrique})]
 
 	<div id="contenu" class="col1">
 		[(#INCLURE{fond=include/path}{id_rubrique})]
     <BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
-    <div class="news">
-			[<h4>(#TITRE|supprimer_numero)</h4>]
+        <div class="news">
+		[<h4>(#TITRE|supprimer_numero)</h4>]
     	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
         <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
 		[<div class="chapeau">(#CHAPO)</div>]
 		[(#TEXTE)]
 		[<div class="ps">(#PS)</div>]
         </div>
-        <div class="ban">
-        <INCLURE{fond=include/ban-pave}>
-        </div>
+        
         <a name="commentaire"></a>
 		<B_messages> 
         <div class="comment box1">
@@ -41,27 +39,22 @@
 
 	<div id="colonne2" class="col2">
       <div class="box1">
-      	 <h4>Actualit&eacute;s</h4>
+      	 <h4>Toutes les chroniques</h4>
         <BOUCLE_art(ARTICLES){id_rubrique}{par date}{inverse}{0,20}>
         <div class="actu">
             <B_listdoc><a href="#URL_ARTICLE"><BOUCLE_listdoc(DOCUMENTS){id_article}{0,1}>[(#FICHIER|image_masque{masque2.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})]</BOUCLE_listdoc></a></B_listdoc>
             <span class="date">[(#DATE|affdate)]</span>
-            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{48})]</a></h5>
+            <h5><a href="#URL_ARTICLE">[(#TITRE|couper{34})]</a></h5>
             <div class="clear"> </div>
         </div>
         </BOUCLE_art>
       </div>
-      <div class="ban">
-        [(#INCLURE{fond=include/ban-sky1})]
-        [(#INCLURE{fond=include/ban-sky2})]
-      </div>
-    </div>
+  </div>
 	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
 
 </div>
 
-[(#INCLURE{fond=include/pied})]
+[(#INCLURE{fond=include/pied}{id_rubrique})]
 
 </body>
-
 </BOUCLE_env>

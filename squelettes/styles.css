@@ -725,3 +725,10 @@ div.important{
 /*/////////// Rainer  ///////////////////////////////////////////////////*/
 
 ul li{background:transparent none no-repeat left 2px; list-style:none;}
+
+.ui-widget{z-index:2000; background:white;}
+
+.ui-selectmenu-menu {
+    z-index:2000;
+}
+.ui-autocomplete { position: absolute; cursor: default;z-index:2000 !important;}  
