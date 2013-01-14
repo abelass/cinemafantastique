@@ -651,3 +651,6 @@ ul.nuage li span.frequence {display: none;}
 .liste_recherche .item{clear:both;background-color: rgba(0,0,0,.2);padding:4px;margin-bottom: 8px;}
 .affichage_special p, .affichage_special td{color:#ffa500}
 
+ul li{background:transparent none no-repeat left 2px; list-style:none;}
+
+.ui-autocomplete { position: absolute; cursor: default;z-index:2000 !important;}  
