@@ -22,13 +22,23 @@
 	/** Behavior IE pour le menu horizontal */
 	body {behavior:url("squelettes/menu.htc");}
 </style>
+[(#REM)autocomplete]
 <script type="text/javascript" >
-    $(document).ready(function() {
+    $(function() {
         $( "#recherche" ).autocomplete({
+                source: "#URL_PAGE{selecteur}",
                 dataType: 'json',
                 minLength: 2,
-                source: "#URL_PAGE{selecteur}",
-        });
+                autoFocus: true,
+                select: function(event, ui) {
+                    //assign value back to the form element
+                    if(ui.item){
+                        $(event.target).val(ui.item.value);
+                    }
+                    //submit the form
+                    $(event.target.form).submit();
+                }
+          });
     });
   </script> 
   
