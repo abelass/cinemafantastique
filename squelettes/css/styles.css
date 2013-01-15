@@ -658,3 +658,5 @@ ul li{background:transparent none no-repeat left 2px; list-style:none;}
 .ui-autocomplete { position: absolute; cursor: default;z-index:2000 !important;}  
 
 .ui-autocomplete-loading { background:url('images/ajax-loader.gif') no-repeat right center }
+
+p.pagination a.on{font-weight:bold;color:#000000}
