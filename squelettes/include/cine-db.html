@@ -1,8 +1,9 @@
+<INCLURE{fond=modeles/menu_db,env,id_rubrique,class="ajax"}/>
+
 <B_articles>
 <span class="pagination">Suite : #PAGINATION</span>
-<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{par date}{inverse}{pagination 32}>#SET{interval,#COMPTEUR_BOUCLE|alterner{'','','','','right'}}
-<BOUCLE_lien(FILMS_LIENS){id_objet=#ID_ARTICLE}{objet=article}>
-<BOUCLE_NomFilm(FILMS){id_film}>
+<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{titre==^(#ENV{lettre,''})}{par #ENV{trier,date}}{inverse #ENV{senstrie,1}}{pagination 32}>#SET{interval,#COMPTEUR_BOUCLE|alterner{'','','','','right'}}
+<BOUCLE_lien(FILMS_LIENS films){id_objet=#ID_ARTICLE}{objet=article}>
 	<dl class="jaquette #GET{interval}">
 	<dt><a href="#URL_FILM">
   [(#LOGO_FILM|!={''}|?{
@@ -14,7 +15,7 @@
 	    </a></dt>
 	<dd>[<strong>(#TITLE|textebrut)</strong>]<br />[<em>(#TITLE_VO|textebrut)</em>]</dd>
 	</dl>
-</BOUCLE_NomFilm>
+
 </BOUCLE_lien>
 </BOUCLE_articles>
 <span class="pagination">#TOTAL_BOUCLE r&eacute;sultats sur un total de #GRAND_TOTAL films<br />Suite : #PAGINATION</span>
