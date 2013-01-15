@@ -13,16 +13,11 @@
 <meta name="copyright" content="#NOM_SITE_SPIP" />
 <meta name="revisit-after" content="7 days" />
 #INSERT_HEAD
-<script type="text/javascript" src="[(#CHEMIN{js/modernizr-2.6.2.min.js})]"></script>
-[(#REM)<script src="[(#CHEMIN{js/jquery.js})]"></script>]
-<script>window.jQuery || document.write('<script src="[(#CHEMIN{js/jquery.js})]">\x3C/script>')</script>
-<link rel="stylesheet" href="[(#CHEMIN{css/styles.css})]" type="text/css" media="screen" />
-<link rel="stylesheet" href="[(#CHEMIN{css/flexslider.css})]" type="text/css" media="screen" />
-<style type="text/css">
-	/** Behavior IE pour le menu horizontal */
-	body {behavior:url("squelettes/menu.htc");}
-</style>
-[(#REM)autocomplete]
+[(#REM)Jquery-ui]
+<link rel="stylesheet" href="[(#CHEMIN{css/jquery-ui.css})]" />
+<script src="[(#CHEMIN{javascript/jquery-ui.js})]"></script>
+
+[(#REM)autocomplete recherche]
 <script type="text/javascript" >
     $(function() {
         $( "#recherche" ).autocomplete({
@@ -33,12 +28,29 @@
                 select: function(event, ui) {
                     //assign value back to the form element
                     if(ui.item){
-                        $(event.target).val(ui.item.value);
+                      $(event.target).val(ui.item.value);
                     }
                     //submit the form
                     $(event.target.form).submit();
+                    $(window).load(function(){
+                    $('#dvLoading').fadeOut(2000);
+                    });
+
                 }
           });
     });
   </script> 
   
+
+
+<script type="text/javascript" src="[(#CHEMIN{js/modernizr-2.6.2.min.js})]"></script>
+[(#REM)<script src="[(#CHEMIN{js/jquery.js})]"></script>]
+
+<script>window.jQuery || document.write('<script src="[(#CHEMIN{js/jquery.js})]">\x3C/script>')</script>
+<link rel="stylesheet" href="[(#CHEMIN{css/styles.css})]" type="text/css" media="screen" />
+<link rel="stylesheet" href="[(#CHEMIN{css/flexslider.css})]" type="text/css" media="screen" />
+<style type="text/css">
+	/** Behavior IE pour le menu horizontal */
+	body {behavior:url("squelettes/menu.htc");}
+</style>
+[(#REM)autocomplete]
