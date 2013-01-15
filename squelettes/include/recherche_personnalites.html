@@ -30,12 +30,5 @@
         </B_personnalite>
         </BOUCLE_objets>
         </BOUCLE_personnalitees>
-        [(#TOTAL_BOUCLE|>{4}|oui)
-            [(#ENV{limite_personnalite}|?{
-              <div class="more"><a class="ajax" href="[(#SELF|parametre_url{limite_personnalite,''})]">Moins de résultats</a></div>   
-                ,
-                <div class="more"><a class="ajax" href="[(#SELF|parametre_url{limite_personnalite,1000})]">Plus de résultats</a></div>   
-            })]
-        ]
 </B_personnalitees>
 <hr /> 
