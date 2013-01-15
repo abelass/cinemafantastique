@@ -32,11 +32,7 @@
         <BOUCLE_titre(RUBRIQUES){id_rubrique}>
         [<h3>(#TITRE|supprimer_numero)</h3>]
         </BOUCLE_titre>
-        
-        <BOUCLE_alpha(ARTICLES){id_article=223}>
-        [(#TEXTE)]
-        </BOUCLE_alpha>
-        [(#INCLURE{fond=include/cine-db}{id_rubrique}{ajax}{self})]
+        <INCLURE{fond=include/cine-db,id_rubrique,ajax,env}/>
         </div>
     </div>
 	
