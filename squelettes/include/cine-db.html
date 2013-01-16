@@ -1,20 +1,33 @@
 <INCLURE{fond=modeles/menu_db,env,id_rubrique,class="ajax"}/>
 
+<B_articles>
+<span class="pagination">Suite : #PAGINATION</span>
+<BOUCLE_articles(ARTICLES){id_rubrique IN 2,3,5}{par date}{inverse}{pagination 32}{si #ENV{lettre}|non}>#SET{interval,#COMPTEUR_BOUCLE|alterner{'','','','','right'}}
+<BOUCLE_lien(FILMS_LIENS){id_objet=#ID_ARTICLE}{objet=article}>
+<BOUCLE_NomFilm(FILMS){id_film}>
+    <dl class="jaquette #GET{interval}">
+    <dt><a href="#URL_FILM">
+  [(#LOGO_FILM|!={''}|?{
+                [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet3}|inserer_attribut{alt,affiche du film})]
+                ,
+                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet3" alt="affiche du film" />]  
+                })]    
 
-
-<B_films_defaut>
-[<span class="pagination">Suite : (#PAGINATION)</span>]
-<BOUCLE_films_defaut(FILMS films_liens articles){films_liens.objet=article}{articles.statut=publie}{articles.id_rubrique IN 2}{!par articles.date}{pagination 32}{si #ENV{lettre}|non}>
-<div class="critiques"><a href="#URL_FILM" title="#TITLE">#TITLE</a></div>
-</BOUCLE_films_defaut>
-[<span class="pagination">Suite : (#PAGINATION)</span>]
-</B_films_defaut>
+        </a></dt>
+    <dd>[<strong>(#TITLE|textebrut)</strong>]<br />[<em>(#TITLE_VO|textebrut)</em>]</dd>
+    </dl>
+</BOUCLE_NomFilm>
+</BOUCLE_lien>
+</BOUCLE_articles>
+<span class="pagination">#TOTAL_BOUCLE r&eacute;sultats sur un total de #GRAND_TOTAL films<br />Suite : #PAGINATION</span>
+</B_articles>
 
 
 <B_films>
 [<span class="pagination">Suite : (#PAGINATION)</span>]
-<BOUCLE_films(FILMS films_liens articles){films_liens.objet=article}{articles.statut=publie}{articles.id_rubrique IN 2}{films.title==^(#ENV{lettre})}{par title}{si #ENV{lettre}|oui}{pagination 32}>
+<BOUCLE_films(FILMS films_liens articles){films_liens.objet=article}{articles.statut=publie}{articles.id_rubrique IN 2,3,5}{films.title==^(#ENV{lettre})}{par title}{si #ENV{lettre}|oui}{pagination 32}>
 <div class="critiques"><a href="#URL_FILM" title="#TITLE">#TITLE</a></div>
 </BOUCLE_films>
 [<span class="pagination">Suite : (#PAGINATION)</span>]
 </B_films>
+
