@@ -1,9 +1,10 @@
 <B_alpha>
 <p class="pagination">
-<BOUCLE_alpha(ARTICLES) {id_rubrique}{par titre} {fusion LEFT(titre,1)}>
-  <a class="menu_alpha[ (#ENV{lettre}|=={#TITRE|substr{0,1}}|oui)on][ (#ENV{class})]" href='[(#URL_RUBRIQUE|parametre_url{lettre, [(#TITRE|substr{0,1})]}|parametre_url{trier,titre}|parametre_url{senstrie,0})]'>
-  [(#TITRE|substr{0,1})]
-  </a>      
+<BOUCLE_alpha(FILMS films_liens articles) {films_liens.objet=article}{articles.statut=publie}{par films.title} {articles.id_rubrique IN 2,3,5}>
+  [<a class="menu_alpha[ (#ENV{lettre}|=={#TITLE|substr{0,1}}|oui)on][ (#ENV{class})]" href='[(#URL_RUBRIQUE{2}|parametre_url{lettre, [(#TITLE|substr{0,1})]}|parametre_url{trier,title}|parametre_url{senstrie,0})]'>
+  (#TITLE|substr{0,1}|unique)
+  </a>]      
 </BOUCLE_alpha>         
   </p>
 </B_alpha>
+
