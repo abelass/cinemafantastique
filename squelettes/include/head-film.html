@@ -1,10 +1,18 @@
-<title><BOUCLE_RecupFilm(FILMS){id_film = #ENV{id_film}}>[(#TITLE|textebrut)][ - (#TITLE_VO|textebrut)][ ((#ANNEE|textebrut))][ un film de (#REALISATEUR|textebrut) |] </BOUCLE_RecupFilm>#NOM_SITE_SPIP</title>
+  <BOUCLE_RecupFilm(FILMS){id_film = #ENV{id_film}}>
+<title>[(#TITLE|textebrut)][ - (#TITLE_VO|textebrut)][ ((#ANNEE|textebrut))][ un film de (#REALISATEUR|textebrut) |] #NOM_SITE_SPIP</title>
 <meta http-equiv="Content-type" content="text/html; charset=#CHARSET" />
 <link rel="shortcut icon" href="[(#CHEMIN{favicon.ico})]" />
 <link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - les news" href="?page=backend" />
 <link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - flash focus" href="?page=focus" />
-<meta name="description" content="#DESCRIPTIF_SITE_SPIP" />
+[<link rel="canonical" href="(#URL_FILM|url_absolue)" />]    
 <meta name="keywords" content="<BOUCLE_metatags(MOTS){id_groupe=1}{", "}>[(#TITRE|supprimer_numero)]</BOUCLE_metatags>" />
+[<meta name="description" content="(#SYNOPSIS|JsToDb{150}|attribut_html)" />]
+<meta property="og:title" content="#TITLE" />
+[<meta property="og:description" content="(#SYNOPSIS|JsToDb{150}|attribut_html)" />]
+[<meta property="og:image" content="(#LOGO_FILM|extraire_attribut{src}|url_absolue)" />]
+[<meta property="og:url" content="(#URL_FILM|url_absolue)" />]
+<meta property="og:site_name" content="#NOM_SITE_SPIP" />
+<meta property="og:type" content="website"/>
 <meta name="robots" content="ALL" />
 <meta name="distribution" content="GLOBAL" />
 <meta name="rating" content="GENERAL" />
@@ -22,3 +30,4 @@
 	/** Behavior IE pour le menu horizontal */
 	body {behavior:url("squelettes/menu.htc");}
 </style>
+</BOUCLE_RecupFilm>
