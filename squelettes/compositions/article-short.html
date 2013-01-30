@@ -6,34 +6,20 @@
     [(#INCLURE{fond=include/menu}{id_rubrique})]
 	
     <div id="contenu" class="col1">
-		[(#INCLURE{fond=include/path}{id_rubrique})]
-		
-		<BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h2>(#TITRE|supprimer_numero)</h2>]</BOUCLE_titre>
-		[<h3>(#TITRE|supprimer_numero)</h3>]
-    	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
-        <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
-		[<div class="chapeau">(#CHAPO)</div>]
-		[(#TEXTE)]
-		[<div class="ps">(#PS)</div>]
-        
-        <!-- commentaire -->
-        <a name="commentaire"></a>
-        <B_messages>
-        <div class="box1">
-        <h3>Commentaires</h3>	
-		<BOUCLE_messages(FORUMS){id_article}{par date}{inverse}>
-			<div class="comment">
+			[(#INCLURE{fond=include/path}{id_rubrique})]
+			
+			<BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h2>(#TITRE|supprimer_numero)</h2>]</BOUCLE_titre>
+			[<h3>(#TITRE|supprimer_numero)</h3>]
+			<INCLURE{fond=include/social_box,env}/>
+	    	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
+	        <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
+			[<div class="chapeau">(#CHAPO)</div>]
 			[(#TEXTE)]
-			<div class="more">[(#DATE|affdate)]&nbsp;| Par [<a href="(#URL_SITE)">][(#NOM)]</a></div>
-			</div>
-		</BOUCLE_messages>
-        </div>
-		</B_messages>
-		<//B_messages>
-        <div class="box1">
-		<h3>Ajouter un commentaire</h3>
-		#FORMULAIRE_FORUM
-        </div>
+			[<div class="ps">(#PS)</div>]
+     
+      <!-- commentaire -->
+      [(#INCLURE{fond=include/comments}{env})] 
+    
     </div>
 
   [(#INCLURE{fond=include/colonne2}{id_rubrique})]

@@ -10,7 +10,7 @@
         [(#INCLURE{fond=include/path}{id_rubrique})]
         
         <h3>Critique de film</h3>
-        
+        <INCLURE{fond=include/social_box,env}/>
         <BOUCLE_lien(FILMS_LIENS){id_objet = #ID_ARTICLE}{objet=article}>
         <BOUCLE_NomFilm(FILMS){id_film=#ID_FILM}>
         <div class="box1 film">

@@ -11,6 +11,7 @@
 		<BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
     <div class="article">   
         [<h4>(#TITRE|supprimer_numero)</h4>]
+        <INCLURE{fond=include/social_box,env}/>
         [<div class="chapeau">(#CHAPO)</div>]
         [(#TEXTE)]
         [<div class="ps">(#PS)</div>]

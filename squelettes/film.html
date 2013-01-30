@@ -10,7 +10,12 @@
     [(#INCLURE{fond=include/menu}{id_rubrique=2})]
     <div id="contenu" class="col1">
         [(#INCLURE{fond=include/cine-critique}{id_film})]
-
+        
+        <!-- Banner -->
+	      <div class="ban">
+		      [(#INCLURE{fond=include/ban-iab})]
+		    </div>
+		    
         <div class="comment box1">
         #FORMULAIRE_COMMENTAIRE_FILM{#ENV{id_film}}
         </div>

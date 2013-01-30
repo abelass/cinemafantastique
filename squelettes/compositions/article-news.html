@@ -11,6 +11,7 @@
     <BOUCLE_titre(RUBRIQUES){id_rubrique}>[<h3>(#TITRE|supprimer_numero)</h3>]</BOUCLE_titre>
     <div class="news">
 			[<h4>(#TITRE|supprimer_numero)</h4>]
+			<INCLURE{fond=include/social_box,env}/>
     	<span class="details" >[(#DATE|affdate)] | Par&nbsp;:&nbsp;<BOUCLE_auts(AUTEURS){id_article}{", "}>[<a href="#URL_AUTEUR">(#NOM|supprimer_numero)</a>]</BOUCLE_auts></span>
         <BOUCLE_motscle(MOTS){id_article}{" "}>#LOGO_MOT</BOUCLE_motscle>
 		[<div class="chapeau">(#CHAPO)</div>]
@@ -21,22 +22,8 @@
         <INCLURE{fond=include/ban-pave}>
         </div>
         <a name="commentaire"></a>
-		<B_messages> 
-        <div class="comment box1">
-        <h4>Commentaires</h4>	
-		<BOUCLE_messages(FORUMS){id_article}{par date}{inverse}>
-			<div class="comment">
-			[(#TEXTE)]
-			<div class="more">[(#DATE|affdate)]&nbsp;| Par [<a href="(#URL_SITE)">][(#NOM)]</a></div>
-			</div>
-		</BOUCLE_messages>
-        </div>
-		</B_messages>
-		<//B_messages>
-        <div class="comment box1">
-            <h4>Ajouter un commentaire</h4>
-            #FORMULAIRE_FORUM
-        </div>
+        <!-- commentaire -->
+        [(#INCLURE{fond=include/comments}{env})] 
 	</div>
 
 	<div id="colonne2" class="col2">

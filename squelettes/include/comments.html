@@ -1,0 +1,23 @@
+        <a name="commentaire"></a>
+        <B_messages>
+        <div class="box1">
+        <h3>Commentaires</h3>	
+        <BOUCLE_messages(FORUMS){id_article}{par date}{inverse}>
+				<div class="comment">
+				[(#TEXTE)]
+				<div class="more">[(#DATE|affdate)]&nbsp;| Par [<a href="(#URL_SITE)">][(#NOM)]</a></div>
+				</div>
+				</BOUCLE_messages>
+	      </div>
+	      </B_messages>
+	      <//B_messages>
+			
+	      <!-- Banner -->
+	      <div class="ban">
+		      [(#INCLURE{fond=include/ban-iab})]
+		    </div>
+	
+	      <div class="box1">
+					<h3>Ajouter un commentaire</h3>
+					#FORMULAIRE_FORUM
+				</div>

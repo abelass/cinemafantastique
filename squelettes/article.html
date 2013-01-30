@@ -3,6 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 [(#INCLURE{fond=include/head}{id_rubrique})]
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<meta property="og:title" content="#TITRE" />
+[<meta property="og:description" content="(#INTRODUCTION{150}|textebrut)" />]
+[<meta property="og:image" content="(#LOGO_ARTICLE|extraire_attribut{src}|url_absolue)" />]
+[<meta property="og:url" content="(#URL_ARTICLE|url_absolue)" />]
+<meta property="og:site_name" content="#NOM_SITE_SPIP" />
+<meta property="og:type" content="website"/>
+[<link rel="canonical" href="(#URL_ARTICLE|url_absolue)" />]
 </head>
 
 <BOUCLE_rub(RUBRIQUES){id_rubrique}>
