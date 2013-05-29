@@ -664,3 +664,30 @@ p.pagination a.on{font-weight:bold;color:#000000}
 
 .social_box {height:25px}
 .social_box div{float:left; margin-right:2px}
+
+/*Shop*/
+.formulaire_panier{float:right;width:200px}
+
+.formulaire_panier form,.formulaire_panier select{width:98%}
+
+.formulaire_panier select, .formulaire_panier input, #mon_panier button {background:#EEEEEE}
+
+.formulaire_panier input.submit, #mon_panier button.submit,.formulaire_panier input.submit {float:right}
+
+
+.formulaire_panier .prix_unitaire, .formulaire_panier .quantite, .formulaire_panier .montant, .formulaire_panier .total_ht, .formulaire_panier .taxes, .formulaire_panier .total_ttc, .formulaire_panier td, .formulaire_panier th,  .formulaire_panier input, #mon_panier button{font-size:10Px}
+
+
+.formulaire_panier input.text{color:#000000}
+#mon_panier .bouton_action_post{float:left}
+.continuer, .annuler {
+	background:#EEEEEE;
+	font-size:10px;
+	border :#999999 1px solid;
+    float: left;
+    padding: 0.3em 0.1em;
+	margin-left:5px;
+    width: 100px;
+}
+
+

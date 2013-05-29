@@ -1,0 +1,4 @@
+<composition>
+	<nom>Rubrique Shop</nom>
+	<branche type="article" composition="shop" />
+</composition>
