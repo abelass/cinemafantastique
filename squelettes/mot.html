@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-[(#INCLURE{fond=include/head})]
+[(#INCLURE{fond=include/head}{id_mot})]
 </head>
 [(#INCLURE{fond=include/body})]
 <div id="principal" class="container">
@@ -41,10 +41,12 @@
         <div class="box1">
         <h4>Articles associ&eacute;s au tag "#TITRE"</h4>
         <ul>
-        <BOUCLE_art(ARTICLES){id_mot}>
+        <BOUCLE_art(ARTICLES){id_mot}{pagination 50}>
             <li><a href="#URL_ARTICLE">#TITRE</a></li>
         </BOUCLE_art>
         </ul>
+        #PAGINATION
+        </B_art>
         <p>Aucun article associ&eacute; à ce tag</p>
         <//B_art>
         </div>
@@ -57,12 +59,13 @@
             <dt><a href="#URL_MOT">#TITRE</a></dt>
             </BOUCLE_listeMots>
         	</dl>
+        	</B_listeMots>
         </div>
      </div>
 	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
 	
 </div>
-[(#INCLURE{fond=include/pied})]
+
 
 </body>
 </html>

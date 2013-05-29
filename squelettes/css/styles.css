@@ -5,14 +5,15 @@
 */
 /* Fonts ---------------------- */
 @font-face {
-    font-family: 'LeagueGothicRegular';
-    src: url('../font/League_Gothic-webfont.eot');
-    src: url('../font/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/League_Gothic-webfont.woff') format('woff'),
-         url('../font/League_Gothic-webfont.ttf') format('truetype'),
-         url('../font/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
-    font-weight: bold;
+    font-family: 'league';
+    src: url('../font/LeagueGothic-Regular-webfont.eot');
+    src: url('../font/LeagueGothic-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/LeagueGothic-Regular-webfont.woff') format('woff'),
+         url('../font/LeagueGothic-Regular-webfont.ttf') format('truetype'),
+         url('../font/LeagueGothic-Regular-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
     font-style: normal;
+
 }
 
 /* Global Reset & Standards ---------------------- */
@@ -42,7 +43,7 @@ a:hover { color: #CC0000;text-decoration:underline; }
 a:focus { color: #2795b6; }
 p a, p a:visited { line-height: inherit; }
 
-h1,h2,h3,h4,h5,h6{font-family: "LeagueGothicRegular","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;}
+h1,h2,h3,h4,h5,h6{font-family: "league","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;font-weight: normal;}
 h1{
 	display:block;
 	position:absolute;
@@ -219,7 +220,7 @@ input.forml:focus,input[type="text"]:focus, input[type="password"]:focus, input[
 	float:left;
 	padding:0 12px 0 12px;
 	margin:0;
-	font-family: "LeagueGothicRegular","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-family: "league","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 	line-height: 2em;
 	font-size:1.4em;
