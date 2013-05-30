@@ -1,0 +1,14 @@
+<BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,#ENV{limit,5}}>
+      <div class="box1 event">
+      [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
+      [<a href="#URL_ARTICLE">(#LOGO_ARTICLE|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})</a>]
+      <span class="date">[(#DATE|affdate)] | <BOUCLE_nbComm(FORUMS){id_article}></BOUCLE_nbComm></B_nbComm><a href="#URL_ARTICLE#commentaire">#TOTAL_BOUCLE<//B_nbComm> commentaires</a></span>
+      <div class="formulaire_panier">
+          <div class="ajax">
+             #FORMULAIRE_PANIER_DECLINAISON{#ID_ARTICLE}
+            </div>
+      </div>
+      [<p>(#INTRODUCTION)</p>] 
+      <span class="more"><a href="#URL_ARTICLE">lire plus</a></span>
+      </div>
+</BOUCLE_art1>

@@ -690,4 +690,10 @@ p.pagination a.on{font-weight:bold;color:#000000}
     width: 100px;
 }
 
+.menu-shop{background-color: rgba(0, 0, 0, 0.2);font-weight: bold}
 
+ul.menu-shop{margin-bottom:1em}
+
+ul.menu-shop li.on a{color:#000000}
+
+#documents_portfolio li {display:inline}
