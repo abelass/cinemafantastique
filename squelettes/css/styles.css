@@ -743,9 +743,11 @@ ul.menu-shop li.on a{color:#000000}
 
 .shop .produit .prix{float:left}
 
+.shop .article .spip_logos{float:left;margin: 0 10px 10px 10px}
 
+.shop .article .images,.shop .article .infos  {float:left; width:50%}
 
+.shop .article .principal {clear:both;margin-top:10px}
 
-
-
+.nettoyeur{clear:both}
 
