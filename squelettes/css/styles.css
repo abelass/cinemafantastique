@@ -666,7 +666,7 @@ p.pagination a.on{font-weight:bold;color:#000000}
 .social_box div{float:left; margin-right:2px}
 
 /*Shop*/
-.formulaire_panier{float:right;width:200px}
+.formulaire_panier{float:right;width:260px}
 
 .formulaire_panier form,.formulaire_panier select{width:98%}
 
@@ -675,7 +675,7 @@ p.pagination a.on{font-weight:bold;color:#000000}
 .formulaire_panier input.submit, #mon_panier button.submit,.formulaire_panier input.submit {float:right}
 
 
-.formulaire_panier .prix_unitaire, .formulaire_panier .quantite, .formulaire_panier .montant, .formulaire_panier .total_ht, .formulaire_panier .taxes, .formulaire_panier .total_ttc, .formulaire_panier td, .formulaire_panier th,  .formulaire_panier input, #mon_panier button{font-size:10Px}
+.formulaire_panier .prix_unitaire, .formulaire_panier .quantite, .formulaire_panier .montant, .formulaire_panier .total_ht, .formulaire_panier .taxes, .formulaire_panier .total_ttc, .formulaire_panier td, .formulaire_panier th,  .formulaire_panier input, #mon_panier button{font-size:12Px}
 
 
 .formulaire_panier input.text{color:#000000}
@@ -688,6 +688,7 @@ p.pagination a.on{font-weight:bold;color:#000000}
     padding: 0.3em 0.1em;
 	margin-left:5px;
     width: 100px;
+    line-height:normal;
 }
 
 .menu-shop{background-color: rgba(0, 0, 0, 0.2);font-weight: bold}
@@ -697,3 +698,38 @@ ul.menu-shop{margin-bottom:1em}
 ul.menu-shop li.on a{color:#000000}
 
 #documents_portfolio li {display:inline}
+
+.shop #contenu{width: 71.6667%;}
+
+.shop #colonne2{width: 25.6667%;}
+
+#menu ul li.panier {font-size:1.4em;float:right;position:relative;	width:270px; padding:0 5px;color:#F6F6F6}
+
+#mon_panier .titre_panier{padding-right:140px;right:0;line-height:40px}
+
+#mon_panier .wrapper{
+	position:absolute;
+	right:0;
+	background:#AE0505;
+	width:270px;
+	padding:0 7px}
+
+#mon_panier .fermer{display:none}
+
+#mon_panier .open .fermer{display:inline}
+
+#mon_panier .action{margin-left:15px;margin-right:5px}
+
+#mon_panier .commande{float:right}
+
+#mon_panier .open .voir{display:none}
+
+#mon_panier .commande a{color:#F6F6F6}
+
+
+
+
+
+
+
+

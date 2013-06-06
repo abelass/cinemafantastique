@@ -1,6 +1,6 @@
 <BOUCLE_env(RUBRIQUES){id_rubrique}>
 [(#INCLURE{fond=include/body})]
-<div id="principal" class="container">
+<div id="principal" class="container shop">
     [(#INCLURE{fond=include/header}{id_rubrique})]
     
   [(#INCLURE{fond=include/menu}{id_rubrique})]
@@ -16,26 +16,12 @@
       
   </div>
     
-    <div id="colonne2" class="col2">
-      
-        <INCLURE{fond=include/mon_panier,env,ajax=mon_panier,session}/>
 
-    <B_articlem>
-    <div class="box1">
-        <h4>Autres Produits</h4>
-        [<p class="pagination">(#PAGINATION)</p>]
-         <dl>
-          <BOUCLE_articlem(ARTICLES){id_rubrique}{par titre}{5,100}{pagination 20}>
-                <a href="#URL_ARTICLE">[(#TITRE|couper{38})]</a><br /><small>[(#DATE|jour)]/[(#DATE|mois)]/
-            </BOUCLE_articlem>
-         </dl> 
-         <script defer src="[(#CHEMIN{js/accordion.js})]"></script>
-      </div>
-      </B_articlem>
-  </div>
-  </div>
     
-    [(#INCLURE{fond=include/colonne3}{id_rubrique})]    
+<div id="colonne2" class="col3">
+    
+</div>
+
 </div>
 <INCLURE{fond=include/pied}>
 

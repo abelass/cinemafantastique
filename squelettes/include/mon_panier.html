@@ -1,17 +1,32 @@
 #CACHE{0}
 
 
-<B_ispanier>
-<div class="box1" id="mon_panier">
-<h4><:paniers:mon_panier:></h4>
-<div class="ajax">#FORMULAIRE_PANIER</div>
-	
-<BOUCLE_ispanier(CONDITION){si #SESSION{id_panier}|oui}>
-	[(#BOUTON_ACTION{<:paniers:vider_le_panier:>,#URL_ACTION_AUTEUR{supprimer_panier_encours,'',#SELF},ajax})]
-	<BOUCLE_article_suitepanier(ARTICLES){id_rubrique=-1}>[(#PAGE|=={suitepanier}|oui)<div class="texte #EDIT{texte}">#TEXTE</div>]</BOUCLE_article_suitepanier>
-	[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|lien_ou_expose{<:shop:passer_la_commande:>,'',continuer})]
-	<//B_article_suitepanier>
-</BOUCLE_ispanier>
+[(#SESSION{id_panier}|oui)
+<div id="mon_panier">
+    <div class="titre_panier"><:paniers:mon_panier:></div> 
+    <div class="wrapper">          
+        <div class="resume"> 
+            <span class="prix">Montant :&nbsp; </span><span class="action voir">Voir détail</span> <span class="action fermer">Fermer</span>
+           <span class="commande">[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|lien_ou_expose{<:shop:passer_la_commande:>})]</span> 
+        </div>
+        <div class="details">     
+            <div class="ajax">#FORMULAIRE_PANIER</div>
+            [(#BOUTON_ACTION{<:paniers:vider_le_panier:>,#URL_ACTION_AUTEUR{supprimer_panier_encours,'',#SELF},ajax})]
+        </div>
+    </div>
 </div>
-</B_ispanier>
 
+[(#REM) ouvrir et fermer le panier]
+<script type="text/javascript">
+    $(function(){
+        $('#mon_panier .details').hide();        
+        $('#mon_panier .resume .prix').append( $('tr.total_ttc td.montant').clone());
+        $('#mon_panier .resume .prix td').replaceWith($('<span>' + $(".montant").html() + '</span>'));
+    $("#mon_panier .action").click(function() {
+        $('#mon_panier .resume').toggleClass('open');
+        $("#mon_panier .details").toggle(1000);
+       return false;
+  });
+});    
+</script>
+]
