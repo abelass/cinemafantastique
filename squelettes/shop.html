@@ -1,70 +1,11 @@
+<BOUCLE_rub(RUBRIQUES){composition=shop}{0,1}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><:shop:shop:> - [(#NOM_SITE_SPIP|textebrut)]</title>
-[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|attribut_html)" />]
-<meta name="robots" content="none" />
-<meta http-equiv="Content-type" content="text/html; charset=#CHARSET" />
-<link rel="shortcut icon" href="[(#CHEMIN{favicon.ico})]" />
-<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - les news" href="?page=backend" />
-<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - flash focus" href="?page=focus" />
-<meta name="keywords" content="<BOUCLE_metatags(MOTS){id_groupe=1}{", "}>[(#TITRE|supprimer_numero)]</BOUCLE_metatags>" />
-<meta name="distribution" content="GLOBAL" />
-<meta name="rating" content="GENERAL" />
-<meta name="ROBOTS" content="INDEX,FOLLOW" />
-<meta name="author" content="#NOM_SITE_SPIP" />
-<meta name="copyright" content="#NOM_SITE_SPIP" />
-<meta name="revisit-after" content="7 days" />
-#INSERT_HEAD
-<script type="text/javascript" src="[(#CHEMIN{js/modernizr-2.6.2.min.js})]"></script>
-<script>window.jQuery || document.write('<script src="[(#CHEMIN{js/jquery.js})]">\x3C/script>')</script>
-<link rel="stylesheet" href="[(#CHEMIN{css/styles.css})]" type="text/css" media="screen" />
-<link rel="stylesheet" href="[(#CHEMIN{css/flexslider.css})]" type="text/css" media="screen" />
-<style type="text/css">
-    /** Behavior IE pour le menu horizontal */
-    body {behavior:url("squelettes/menu.htc");}
-</style>
+    [(#INCLURE{fond=include/head}{id_rubrique})]
 </head>
-[(#INCLURE{fond=include/body})]
-<div id="principal" class="container">
-    [(#INCLURE{fond=include/header})]
-    
-    [(#INCLURE{fond=include/menu})]
 
-    <div id="contenu" class="col1">
-        [(#INCLURE{fond=include/menu_shop,env})]
-        <h3><:shop:></h3>
-        [(#REM) 1 -la boutique ]
-           <BOUCLE_rub_shop(RUBRIQUES){composition=shop}{si #ENV{appel}|non}>
-            <INCLURE{fond=include/articles_precieux,id_rubrique,env}/>
-           </BOUCLE_rub_shop>
-        
-        [(#REM) 2 - mon_panier ]
-        [(#ENV{appel}|=={"mon_panier"}|oui)
-            <INCLURE{fond=inclure/mon_panier}{env}>
-          #SET{stop,oui}
-        ]
-        
-        [(#REM) 3 - mes_coordonnees ]
-        [(#ENV{appel}|=={"mes_coordonnees"}|oui)
-            <INCLURE{fond=inclure/mes_coordonnees}{env}>
-          #SET{stop,oui}
-        ]
-       [(#ENV{appel}|=={""}|non|et{#ENV{appel}|=={"mon_panier"}|non}|et{#ENV{appel}|=={"mes_coordonnees"}|non}|et{#SESSION{id_auteur}|non})
-          <h4>[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|lien_ou_expose{<:shop:veuillez_vous_connecter:>})]</h4>
-          #SET{stop,oui}
-       ]
-        [(#GET{stop}|=={oui}|non)
-          <INCLURE{fond=inclure/#ENV{appel}}{env}>
-        ]
-         <//B_rub_shop>    
-    </div>
-     <div id="colonne2" class="col2">   
-        <INCLURE{fond=include/mon_panier,env,ajax=mon_panier,session}/>
-     </div>
-	[(#INCLURE{fond=include/colonne3}{id_rubrique})]
+  [(#INCLURE{fond=compositions/rubrique[-(#COMPOSITION)],id_rubrique,env})]    
 
-</div>
-
-</body>
 </html>
+</BOUCLE_rub>

@@ -699,7 +699,7 @@ ul.menu-shop li.on a{color:#000000}
 
 #documents_portfolio li {display:inline}
 
-.shop #contenu{width: 71.6667%;}
+.shop #contenu{width: 71.6667%; overflow:hidden}
 
 .shop #colonne2{width: 25.6667%;}
 
@@ -712,7 +712,8 @@ ul.menu-shop li.on a{color:#000000}
 	right:0;
 	background:#AE0505;
 	width:270px;
-	padding:0 7px}
+	padding:0 7px;
+	line-height:16px;}
 
 #mon_panier .fermer{display:none}
 
@@ -726,6 +727,21 @@ ul.menu-shop li.on a{color:#000000}
 
 #mon_panier .commande a{color:#F6F6F6}
 
+.shop .produit{
+	width:33.33%; float:left;padding:0;margin:0;
+	border-top:#DDDDDD 1px solid;
+	border-bottom:#DDDDDD 1px solid;	
+	border-left:#DDDDDD 1px solid;	
+	}
+.shop .produit.last{	border-right:#DDDDDD 1px solid;	}
+
+.shop .produit .wrapper{padding:0.5em 1em;}
+
+.shop .produit .logo{text-align:center}
+
+.shop .produit .infos{margin-top:5px;text-align:right}
+
+.shop .produit .prix{float:left}
 
 
 

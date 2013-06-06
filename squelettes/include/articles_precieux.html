@@ -1,14 +1,25 @@
-<BOUCLE_art1(ARTICLES){id_rubrique}{par date}{inverse}{0,#ENV{limit,5}}>
-      <div class="box1 event">
-      [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
-      [<a href="#URL_ARTICLE">(#LOGO_ARTICLE|image_masque{masque1.png}|image_gamma{-25}|inserer_attribut{"class","onglet1"}|inserer_attribut{"alt","photo "#ID_DOCUMENT})</a>]
-      <span class="date">[(#DATE|affdate)] | <BOUCLE_nbComm(FORUMS){id_article}></BOUCLE_nbComm></B_nbComm><a href="#URL_ARTICLE#commentaire">#TOTAL_BOUCLE<//B_nbComm> commentaires</a></span>
-      <div class="formulaire_panier">
-          <div class="ajax">
-             #FORMULAIRE_PANIER_DECLINAISON{#ID_ARTICLE}
-            </div>
-      </div>
-      [<p>(#INTRODUCTION)</p>] 
-      <span class="more"><a href="#URL_ARTICLE">lire plus</a></span>
-      </div>
+
+<B_art1>
+#ANCRE_PAGINATION
+<BOUCLE_art1(ARTICLES){id_rubrique}{id_mot ?}{par date}{inverse}{pagination 30}>
+<div class="produit[(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui) last]">
+    <div class="wrapper">
+        [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
+        [<div class="logo"><a href="#URL_ARTICLE">(#LOGO_ARTICLEimage_passe_partout{130,180}
+                |image_recadre{130,180}|image_gamma{-25}|inserer_attribut{"alt",#TITRE})</a></div>]
+        <div class="infos box1">                
+        <B_objets_precieux>
+         <span class="prix">        
+         <BOUCLE_objets_precieux(PRIX_OBJETS){fusion prix}{id_objet=#ID_ARTICLE}{objet=article}>
+                [(#COMPTEUR_BOUCLE|=={1}|oui)#PRIX_HT]
+                [ - (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|et{#COMPTEUR_BOUCLE|!={1}}|oui)#PRIX_HT]            
+        </BOUCLE_objets_precieux>
+        </span>    
+         </B_objets_precieux> 
+         <span class="more"><a href="#URL_ARTICLE">En savoir plus</a></span>
+         </div>
+    </div>
+</div>
 </BOUCLE_art1>
+[<p class="pagination">(#PAGINATION)</p>]
+</B_art1>

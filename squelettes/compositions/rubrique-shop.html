@@ -5,22 +5,7 @@
     
   [(#INCLURE{fond=include/menu}{id_rubrique})]
 
-  <div id="contenu" class="col1">
-      <INCLURE{fond=include/path}{id_rubrique}>
-       [(#INCLURE{fond=include/menu_shop,env})]      
-      [<h3>(#TITRE|supprimer_numero)</h3>]
-      [<strong>(#DESCRIPTIF)</strong>]
-      [(#TEXTE)]
-      
-    <INCLURE{fond=include/articles_precieux,id_rubrique,env}/>
-      
-  </div>
-    
-
-    
-<div id="colonne2" class="col3">
-    
-</div>
+    <INCLURE{fond=include/shop,env,ajax,titre}/>
 
 </div>
 <INCLURE{fond=include/pied}>
