@@ -5,14 +5,14 @@
 <div class="produit[(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui) last]">
     <div class="wrapper">
         [<h4><a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a></h4>]
-        [<div class="logo"><a href="#URL_ARTICLE">(#LOGO_ARTICLEimage_passe_partout{130,180}
+        [<div class="logo"><a href="#URL_ARTICLE">(#LOGO_ARTICLE|image_passe_partout{130,180}
                 |image_recadre{130,180}|image_gamma{-25}|inserer_attribut{"alt",#TITRE})</a></div>]
         <div class="infos box1">                
         <B_objets_precieux>
          <span class="prix">        
          <BOUCLE_objets_precieux(PRIX_OBJETS){fusion prix}{id_objet=#ID_ARTICLE}{objet=article}>
-                [(#COMPTEUR_BOUCLE|=={1}|oui)#PRIX_HT]
-                [ - (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|et{#COMPTEUR_BOUCLE|!={1}}|oui)#PRIX_HT]            
+                [(#COMPTEUR_BOUCLE|=={1}|oui)#PRIX_HT €]
+                [ - (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|et{#COMPTEUR_BOUCLE|!={1}}|oui)#PRIX_HT €]            
         </BOUCLE_objets_precieux>
         </span>    
          </B_objets_precieux> 
