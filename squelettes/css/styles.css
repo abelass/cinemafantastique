@@ -523,8 +523,8 @@ span.details{
 	color:#242424;
 	margin-top: 8px
 }
-.spip_bouton input,
-.formulaire_forum input.submit{
+.spip_bouton input,.boutons input,
+.formulaire_forum input.submit, .formulaire_panier_declinaison input.submit{
 	background:url("../images/bg_button.jpg") repeat-x scroll left top #8F0505;
 	color:#FFFFFF;
 	font-weight:bold;
@@ -534,6 +534,9 @@ span.details{
 	border: none;
 	text-shadow: 0px 1px 1px rgba(0,0,0,.5);
 }
+
+p.boutons {float:right}
+.formulaire_paypal
 
 /* forum */
 .comment{
@@ -670,9 +673,17 @@ p.pagination a.on{font-weight:bold;color:#000000}
 
 .formulaire_panier form,.formulaire_panier select{width:98%}
 
-.formulaire_panier select, .formulaire_panier input, #mon_panier button {background:#EEEEEE}
+.formulaire_panier select, .formulaire_panier input, #mon_panier button {
+	background:#EEEEEE; 
+	border:#474747 1px solid;
+	padding:0.2em;
+	color:black;
+}
+
+.formulaire_editer_client select{background:#333333;color:#FFFFFF;padding:6px}
 
 .formulaire_panier input.submit, #mon_panier button.submit,.formulaire_panier input.submit {float:right}
+
 
 
 .formulaire_panier .prix_unitaire, .formulaire_panier .quantite, .formulaire_panier .montant, .formulaire_panier .total_ht, .formulaire_panier .taxes, .formulaire_panier .total_ttc, .formulaire_panier td, .formulaire_panier th,  .formulaire_panier input, #mon_panier button{font-size:12Px}
@@ -699,9 +710,11 @@ ul.menu-shop li.on a{color:#000000}
 
 #documents_portfolio li {display:inline}
 
-.shop #contenu{width: 71.6667%; overflow:hidden}
+.shop #contenu{width: 71.68%; overflow:hidden}
 
-.shop #colonne2{width: 25.6667%;}
+.shop #colonne2{
+	width: 26.32%;
+	}
 
 #menu ul li.panier {font-size:1.4em;float:right;position:relative;	width:270px; padding:0 5px;color:#F6F6F6}
 
@@ -719,7 +732,7 @@ ul.menu-shop li.on a{color:#000000}
 
 #mon_panier .open .fermer{display:inline}
 
-#mon_panier .action{margin-left:15px;margin-right:5px}
+#mon_panier .action{margin-left:15px;margin-right:5px;cursor: pointer}
 
 #mon_panier .commande{float:right}
 
