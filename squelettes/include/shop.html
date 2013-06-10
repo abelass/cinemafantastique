@@ -14,8 +14,7 @@
     ]
    [(#ENV{appel}|=={""}|non|et{#ENV{appel}|=={"mon_panier"}|non}|et{#ENV{appel}|=={"mes_coordonnees"}|non}|et{#SESSION{id_auteur}|non})
       <h4>[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|lien_ou_expose{<:shop:veuillez_vous_connecter:>})]</h4>
-      #SET{stop,oui}
-   ]
+      #SET{stop,oui}]
     [(#GET{stop}|=={oui}|non)
       <INCLURE{fond=inclure/#ENV{appel}}{env}>
     ]
