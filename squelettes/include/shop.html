@@ -3,9 +3,22 @@
       [<h3>(#TITRE|supprimer_numero)</h3>]
       [<strong>(#DESCRIPTIF)</strong>]
       [(#TEXTE)]
-      
-    <INCLURE{fond=include/articles_precieux,id_rubrique,env}/>
-      
+     
+    [(#ENV{appel}|non) <INCLURE{fond=include/articles_precieux,id_rubrique,env}/>]  
+
+    
+    [(#REM) - mes_coordonnees ]
+    [(#ENV{appel}|=={"mes_coordonnees"}|oui)
+        <INCLURE{fond=inclure/mes_coordonnees}{env}>
+      #SET{stop,oui}
+    ]
+   [(#ENV{appel}|=={""}|non|et{#ENV{appel}|=={"mon_panier"}|non}|et{#ENV{appel}|=={"mes_coordonnees"}|non}|et{#SESSION{id_auteur}|non})
+      <h4>[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|lien_ou_expose{<:shop:veuillez_vous_connecter:>})]</h4>
+      #SET{stop,oui}
+   ]
+    [(#GET{stop}|=={oui}|non)
+      <INCLURE{fond=inclure/#ENV{appel}}{env}>
+    ]
   </div>
 <div id="colonne2" class="col3">
     <INCLURE{fond=include/menu_mots,id_rubrique,env}/>
