@@ -4,7 +4,9 @@
     <ul>
        <BOUCLE_mots(MOTS){id_groupe=9}{par num titre,titre}>
         <B_articles>
-           <li><a class="ajax"· href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]">#TITRE</a></li>
+           <li>
+               <a[(#ENV{noajax}|non) class="ajax"] href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]">#TITRE</a>
+          </li>
            <BOUCLE_articles(ARTICLES){id_mot}>
            </BOUCLE_articles>
         <//B_articles>
