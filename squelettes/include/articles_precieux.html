@@ -12,8 +12,8 @@
         <B_objets_precieux>
          <span class="prix">        
          <BOUCLE_objets_precieux(PRIX_OBJETS){fusion prix}{id_objet=#ID_ARTICLE}{objet=article}>
-                [(#COMPTEUR_BOUCLE|=={1}|oui)#PRIX_HT €]
-                [ - (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|et{#COMPTEUR_BOUCLE|!={1}}|oui)#PRIX_HT €]            
+                [(#COMPTEUR_BOUCLE|=={1}|oui)#PRIX_HT]
+                [ - (#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|et{#COMPTEUR_BOUCLE|!={1}}|oui)#PRIX_HT]            
         </BOUCLE_objets_precieux>
         </span>    
          </B_objets_precieux> 
