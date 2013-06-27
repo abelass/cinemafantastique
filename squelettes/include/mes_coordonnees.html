@@ -1,0 +1,26 @@
+[(#SESSION{id_auteur}|non)
+	[<div id="abonne_login" [class="(#ENV{mail}|=={oui}|oui)mailshow"]>
+		<h4><:shop:deja_client:></h4>
+		(#FORMULAIRE_LOGIN{[(#URL_PAGE{shop}|parametre_url{appel,mes_coordonnees}|parametre_url{id_auteur,#SESSION{id_auteur}})]})
+	</div>]
+	<br class="nettoyeur"/>
+]
+
+<BOUCLE_contact(CONTACTS){id_auteur=#SESSION{id_auteur}}{id_auteur>0}{0,1}>
+    [<div id="abonne_coord">    
+        <h4><:shop:verifiez_vos_coordonnees:></h4>
+        (#FORMULAIRE_EDITER_CLIENT{#SESSION{id_auteur},[(#URL_PAGE{shop}|parametre_url{appel,paiement})]})
+    </div>]
+</BOUCLE_contact>
+        [<div id="abonne_coord" [class="(#ENV{mail}|=={oui}|oui)mailhide"]> 
+            <h4><:shop:vos_coordonnees:></h4>
+            <div>(#FORMULAIRE_INSCRIPTION_CLIENT)</div>
+        </div>]
+    [(#SESSION{id_auteur}|oui)
+        [<div id="abonne_coord">    
+            <h4><:shop:verifiez_vos_coordonnees:></h4>
+            (#FORMULAIRE_EDITER_CLIENT{#SESSION{id_auteur},[(#URL_PAGE{shop}|parametre_url{appel,paiement})]})
+        </div>
+        ]
+    ]
+<//B_contact>

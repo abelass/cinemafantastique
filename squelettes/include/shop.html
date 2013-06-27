@@ -11,7 +11,7 @@
     
     [(#REM) - mes_coordonnees ]
     [(#ENV{appel}|=={"mes_coordonnees"}|oui)
-        <INCLURE{fond=inclure/mes_coordonnees}{env}>
+        <INCLURE{fond=include/mes_coordonnees}{env}>
       #SET{stop,oui}
     ]
    [(#ENV{appel}|=={""}|non|et{#ENV{appel}|=={"mon_panier"}|non}|et{#ENV{appel}|=={"mes_coordonnees"}|non}|et{#SESSION{id_auteur}|non})
