@@ -745,8 +745,9 @@ ul.menu-shop li.on a{color:#000000}
 .shop .produit{
 	width:33.33%; float:left;padding:0;margin:0;
 	border:#DDDDDD 1px solid;
-
 	}
+	
+	
 .shop .produit:nth-child(n+2) {
     margin-left: -1px;
 }
@@ -760,6 +761,10 @@ ul.menu-shop li.on a{color:#000000}
 }
 
 .shop .produit .wrapper{padding:0.5em 1em;}
+
+.shop .produit .wrapper h4{height:20px; overflow:hidden}
+
+.shop .produit .wrapper:hover h4{overflow:visible; z-index:100; position:relative}
 
 .shop .produit .logo{text-align:center}
 
