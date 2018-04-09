@@ -1,8 +1,8 @@
 <title>#NOM_SITE_SPIP</title>
 <meta http-equiv="Content-type" content="text/html; charset=#CHARSET" />
 <link rel="shortcut icon" href="[(#CHEMIN{favicon.ico})]" />
-<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - les news" href="?page=backend" />
-<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - flash focus" href="?page=focus" />
+<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - les news" href="#URL_PAGE{backend}" />
+<link rel="alternate" type="application/rss+xml" title="Cinema Fantastique - flash focus" href="#URL_PAGE{focus}" />
 <meta name="description" content="#DESCRIPTIF_SITE_SPIP" />
 <meta name="keywords" content="<BOUCLE_metatags(MOTS){id_groupe=1}{", "}>[(#TITRE|supprimer_numero)]</BOUCLE_metatags>" />
 <meta name="robots" content="ALL" />
@@ -51,6 +51,6 @@
 <link rel="stylesheet" href="[(#CHEMIN{css/flexslider.css})]" type="text/css" media="screen" />
 <style type="text/css">
 	/** Behavior IE pour le menu horizontal */
-	body {behavior:url("squelettes/menu.htc");}
+	body {behavior:url("#CHEMIN{menu.htc}");}
 </style>
 [(#REM)autocomplete]

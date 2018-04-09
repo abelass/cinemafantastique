@@ -1,15 +1,15 @@
 <h3>Sorties futures</h3>
 <?php
-function unhtmlentities($string)
-	{
+// function unhtmlentities($string)
+//	{
    // replace numeric entities
-   $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
-   $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
+//   $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
+//   $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
    // replace literal entities
-   $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-   $trans_tbl = array_flip($trans_tbl);
-   return strtr($string, $trans_tbl);
-}
+//   $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+//   $trans_tbl = array_flip($trans_tbl);
+//   return strtr($string, $trans_tbl);
+// }
 $t=getdate();   
 $today=date('Y-m-d',$t[0]);
 $sql="select * from spip_films WHERE sortie_fr > '$today' Order By sortie_fr asc";

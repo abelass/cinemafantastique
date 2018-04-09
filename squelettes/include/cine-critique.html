@@ -14,7 +14,7 @@
                 [(#LOGO_FILM|image_reduire{160,*}|inserer_attribut{class,onglet1}|inserer_attribut{alt,affiche du film})]
                 ,
                 <a href="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})]" >
-                [<img src="(#CHEMIN{IMG/logos_films/#LOGO})" class="onglet1" alt="affiche du film" />]  
+                <img src="[(#CHEMIN{IMG/logos_films/[(#LOGO)]})" class="onglet1" alt="affiche du film" />]  
                 })]    
                 </a>
 	<ul>
@@ -50,7 +50,7 @@
 		[<li><strong>Dur&eacute;e : </strong>(#DUREE|textebrut)</li>]
 		[<li><strong>Budget : </strong>(#BUDGET|textebrut)</li>]
 		[<li><strong>Meilleures sc&egrave;nes : </strong>(#SCENES|textebrut)</li>]
-		[<li><strong><a href="<?php echo "(#ANNONCE|textebrut)"; ?>" target="_blank">Bande annonce</a></strong></li>]
+		[<li><strong><a href="[(#ANNONCE|textebrut)]" target="_blank">Bande annonce</a></strong></li>]
         [<li><strong><a href="(#SORTIE|textebrut)" target="_blank">Programmation Cinebel</a></strong></li>]
 		[<li><strong>R&eacute;compenses : </strong><span class="headline">(#RECOMPENSES)</span></li>]
 	</ul>
@@ -74,6 +74,7 @@
 
 <div class="ban">
 <INCLURE{fond=include/ban-pave}>
+[(#INCLURE{fond=include/ban-iab})]
 </div>
         
 <div class="critique">

@@ -33,23 +33,11 @@
             [<li><strong>Meilleures sc&egrave;nes : </strong>(#SCENES|textebrut)</li>]
             [<li><strong>Sc&eacute;nariste : </strong>(#SCENARISTE|textebrut)</li>]
             [<li><strong>Musique : </strong>(#MUSIQUE|textebrut)</li>]
-            [<li><strong><a href="<?php echo "(#ANNONCE|textebrut)"; ?>" target="_blank">Bande annonce</a></strong></li>]
+            [<li><strong><a href="[(#ANNONCE|textebrut)]" target="_blank">Bande annonce</a></strong></li>]
             [<li><strong>Casting : </strong>(#CASTING|textebrut)</li>]
-            <li><strong>R&eacute;compenses : </strong><span class="headline"><?php echo nl2br("[(#RECOMPENSES)]"); ?></span></li>
+            <li><strong>R&eacute;compenses : </strong><span class="headline">[(#RECOMPENSES|nl2br)]</span></li>
         </ul>
-        <?php
-        function unhtmlentities($string)
-        {
-       // replace numeric entities
-       $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
-       $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
-       // replace literal entities
-       $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-       $trans_tbl = array_flip($trans_tbl);
-       return strtr($string, $trans_tbl);
-        }
-        ?>
-        <p><em><?php echo unhtmlentities("[(#SYNOPSIS)]"); ?></em></p>
+        <p><em>[(#SYNOPSIS|unhtmlentities)]</em></p>
         
         </div>	
         </BOUCLE_NomFilm>

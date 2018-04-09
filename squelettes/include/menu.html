@@ -7,7 +7,9 @@
         </li></BOUCLE_ss_rubriquea> 
 	</ul></B_ss_rubriquea></li>
 </BOUCLE_rubriques>
+	<?php if (isset($GLOBALS['visiteur_session']['id_panier']) AND $GLOBALS['visiteur_session']['id_panier']) { ?>
 <li class="panier"><INCLURE{fond=include/mon_panier,env,ajax=mon_panier,session}/></li>
+	<?php } ?>
 <li class="item_search ui-widget">#FORMULAIRE_RECHERCHE</li>
 </ul>
 </div>
