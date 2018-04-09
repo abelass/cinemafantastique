@@ -9,3 +9,6 @@ dump
 local
 tmp
 config/connect.php
+/.project
+/.buildpath
+/.settings*
